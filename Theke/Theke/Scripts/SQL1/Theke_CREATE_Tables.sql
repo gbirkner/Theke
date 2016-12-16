@@ -60,8 +60,8 @@ CREATE TABLE [theke].[ProductUnit] (
 
 CREATE TABLE [theke].[Category] (
 	CategoryID 	int 			NOT NULL Identity(0,1),
-	Name 		nvarchar(250) 	NOT NULL,
-	SName 		nvarchar(10) 	NULL,
+	Name 		varchar(250) 	NOT NULL,
+	SName 		varchar(250) 	NOT NULL,
 
 	CONSTRAINT categoryID PRIMARY KEY(categoryID),
 );
