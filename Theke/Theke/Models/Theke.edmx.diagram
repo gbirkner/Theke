@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b7bdb2952a2b4ed4ad08c8cd8d78bbde" Name="Diagram1" ZoomLevel="21">
+        <EntityTypeShape EntityType="thekeModel.AspNetRoles" Width="1.5" PointX="1.875" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.AspNetUserClaims" Width="1.5" PointX="9.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.AspNetUserLogins" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.AspNetUsers" Width="1.5" PointX="4.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.AgeRating" Width="1.5" PointX="24.375" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.BarOrder" Width="1.5" PointX="13" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.BarTable" Width="1.5" PointX="16" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Category" Width="1.5" PointX="24.375" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.DeliverySlip" Width="1.5" PointX="10.625" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.NutriantContent" Width="1.5" PointX="9" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.OrderPosition" Width="1.5" PointX="10.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.PriceHistory" Width="1.5" PointX="13.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Producer" Width="1.5" PointX="20.375" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Product" Width="1.5" PointX="16.625" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.ProductUnit" Width="1.5" PointX="20.375" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Reservation" Width="1.5" PointX="18.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Storage" Width="1.5" PointX="13.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Supplier" Width="1.5" PointX="7.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.Waiter" Width="1.5" PointX="10.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="thekeModel.ZipCode" Width="1.5" PointX="4.875" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="thekeModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_AspNetUsers_CreatedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_AspNetUsers_ModifiedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Waiter_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_AgeRating" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_BarOrder_Waiter" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Reservation_BarTable" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_DeliverySlip_Storage" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_DeliverySlip_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_NutriantContent" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_OrderPosition_PriceHistory" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_PriceHistoryProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_Producer" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Product_ProductUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_Storage_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.fk_ZipCodeID" ManuallyRouted="false" />
+        <AssociationConnector Association="thekeModel.AspNetUserRoles" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="thekeModel.BarOrderBarTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="thekeModel.Invoice" Width="1.5" PointX="24.25" PointY="3.25" />
+        <EntityTypeShape EntityType="thekeModel.InvoiceAddress" Width="1.5" PointX="22" PointY="3.125" />
+        <EntityTypeShape EntityType="thekeModel.InvoicePosition" Width="1.5" PointX="26.5" PointY="3.25" />
+        <AssociationConnector Association="thekeModel.fk_InvoiceInvoiceAddressID" />
+        <AssociationConnector Association="thekeModel.fk_InvoicePositionInvoiceID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

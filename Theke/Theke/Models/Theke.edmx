@@ -1,0 +1,1656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="thekeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgeRating">
+          <Key>
+            <PropertyRef Name="AgeRatingID" />
+          </Key>
+          <Property Name="AgeRatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BarOrder">
+          <Key>
+            <PropertyRef Name="BarOrderID" />
+          </Key>
+          <Property Name="BarOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentStatus" Type="tinyint" Nullable="false" />
+          <Property Name="BarOrderBarTableID" Type="int" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="PoitionID" Type="int" Nullable="false" />
+          <Property Name="WaiterID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BarOrderBarTable">
+          <Key>
+            <PropertyRef Name="BarOrderID" />
+            <PropertyRef Name="BarTableID" />
+          </Key>
+          <Property Name="BarOrderID" Type="int" Nullable="false" />
+          <Property Name="BarTableID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BarTable">
+          <Key>
+            <PropertyRef Name="BarTableID" />
+          </Key>
+          <Property Name="BarTableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionX" Type="int" />
+          <Property Name="PositionY" Type="int" />
+          <Property Name="Width" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="SeatAmount" Type="int" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliverySlip">
+          <Key>
+            <PropertyRef Name="DeliverySlipID" />
+          </Key>
+          <Property Name="DeliverySlipID" Type="int" Nullable="false" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="DeliverySlipNumber" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="BillID" Type="int" Nullable="false" />
+          <Property Name="StorageID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="InvoiceAddressID" Type="int" />
+          <Property Name="Storno" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="InvoiceAddress">
+          <Key>
+            <PropertyRef Name="InvoiceAddressID" />
+          </Key>
+          <Property Name="InvoiceAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="250" />
+          <Property Name="Zipcode" Type="int" />
+          <Property Name="City" Type="nvarchar" MaxLength="250" />
+          <Property Name="Country" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="InvoicePosition">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="InvoiceID" Type="int" Nullable="false" />
+          <Property Name="PositionID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NutriantContent">
+          <Key>
+            <PropertyRef Name="NutrinantContentID" />
+          </Key>
+          <Property Name="NutrinantContentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Energy" Type="float" />
+          <Property Name="Fat" Type="float" />
+          <Property Name="SutartedFat" Type="float" />
+          <Property Name="Carbohydrate" Type="float" />
+          <Property Name="Sugar" Type="float" />
+          <Property Name="Albumen" Type="float" />
+          <Property Name="Salt" Type="float" />
+        </EntityType>
+        <EntityType Name="OrderPosition">
+          <Key>
+            <PropertyRef Name="OrderPositionID" />
+          </Key>
+          <Property Name="OrderPositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriceHistoryID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceHistory">
+          <Key>
+            <PropertyRef Name="PriceHistoryID" />
+          </Key>
+          <Property Name="PriceHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="ProducerID" />
+          </Key>
+          <Property Name="ProducerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="250" />
+          <Property Name="AgeRatingID" Type="int" Nullable="false" />
+          <Property Name="ProductUnitID" Type="int" Nullable="false" />
+          <Property Name="ProducerID" Type="int" Nullable="false" />
+          <Property Name="AlcoholAmount" Type="int" Nullable="false" />
+          <Property Name="NutriantContentID" Type="int" Nullable="false" />
+          <Property Name="EanNumber" Type="int" />
+          <Property Name="Deposit" Type="int" Nullable="false" />
+          <Property Name="ItemAmount" Type="int" Nullable="false" />
+          <Property Name="CategorieID" Type="int" Nullable="false" />
+          <Property Name="MinPrice" Type="float" Nullable="false" />
+          <Property Name="MaxPricce" Type="float" Nullable="false" />
+          <Property Name="AveragePurchasePrice" Type="int" />
+          <Property Name="CreatedByID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ModifiedByID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModfiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductUnit">
+          <Key>
+            <PropertyRef Name="ProductUnitID" />
+          </Key>
+          <Property Name="ProductUnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SName" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Volume" Type="int" Nullable="false" />
+          <Property Name="LitreAmount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PersonAmount" Type="int" Nullable="false" />
+          <Property Name="BarTableID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="StorageID" />
+          </Key>
+          <Property Name="StorageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="ExpirationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="StreetNumber" Type="int" Nullable="false" />
+          <Property Name="ZipCodeID" Type="int" Nullable="false" />
+          <Property Name="OwnCustomerID" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Waiter">
+          <Key>
+            <PropertyRef Name="WaiterID" />
+          </Key>
+          <Property Name="WaiterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Nicname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZipCode">
+          <Key>
+            <PropertyRef Name="ZipCodeID" />
+          </Key>
+          <Property Name="ZipCodeID" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_BarOrder_Waiter">
+          <End Role="Waiter" Type="Self.Waiter" Multiplicity="1" />
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Waiter">
+              <PropertyRef Name="WaiterID" />
+            </Principal>
+            <Dependent Role="BarOrder">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_BarOrderBarTable_BarOrder">
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="1" />
+          <End Role="BarOrderBarTable" Type="Self.BarOrderBarTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarOrder">
+              <PropertyRef Name="BarOrderID" />
+            </Principal>
+            <Dependent Role="BarOrderBarTable">
+              <PropertyRef Name="BarOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_BarOrderBarTable_BarTable">
+          <End Role="BarTable" Type="Self.BarTable" Multiplicity="1" />
+          <End Role="BarOrderBarTable" Type="Self.BarOrderBarTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarTable">
+              <PropertyRef Name="BarTableID" />
+            </Principal>
+            <Dependent Role="BarOrderBarTable">
+              <PropertyRef Name="BarTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DeliverySlip_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+          <End Role="DeliverySlip" Type="Self.DeliverySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="StorageID" />
+            </Principal>
+            <Dependent Role="DeliverySlip">
+              <PropertyRef Name="StorageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DeliverySlip_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="DeliverySlip" Type="Self.DeliverySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="DeliverySlip">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_InvoiceInvoiceAddressID">
+          <End Role="InvoiceAddress" Type="Self.InvoiceAddress" Multiplicity="0..1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceAddress">
+              <PropertyRef Name="InvoiceAddressID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="InvoiceAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_InvoicePositionInvoiceID">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="InvoicePosition" Type="Self.InvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="InvoicePosition">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderPosition_PriceHistory">
+          <End Role="PriceHistory" Type="Self.PriceHistory" Multiplicity="1" />
+          <End Role="OrderPosition" Type="Self.OrderPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceHistory">
+              <PropertyRef Name="PriceHistoryID" />
+            </Principal>
+            <Dependent Role="OrderPosition">
+              <PropertyRef Name="PriceHistoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PriceHistoryProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PriceHistory" Type="Self.PriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="PriceHistory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_AgeRating">
+          <End Role="AgeRating" Type="Self.AgeRating" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeRating">
+              <PropertyRef Name="AgeRatingID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="AgeRatingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_AspNetUsers_CreatedBy">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CreatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_AspNetUsers_ModifiedBy">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ModifiedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategorieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_NutriantContent">
+          <End Role="NutriantContent" Type="Self.NutriantContent" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NutriantContent">
+              <PropertyRef Name="NutrinantContentID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="NutriantContentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Producer">
+          <End Role="Producer" Type="Self.Producer" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producer">
+              <PropertyRef Name="ProducerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProducerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_ProductUnit">
+          <End Role="ProductUnit" Type="Self.ProductUnit" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductUnit">
+              <PropertyRef Name="ProductUnitID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reservation_BarTable">
+          <End Role="BarTable" Type="Self.BarTable" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarTable">
+              <PropertyRef Name="BarTableID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="BarTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Storage_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Waiter_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Waiter" Type="Self.Waiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Waiter">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ZipCodeID">
+          <End Role="ZipCode" Type="Self.ZipCode" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZipCode">
+              <PropertyRef Name="ZipCodeID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="ZipCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="thekeModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgeRating" EntityType="Self.AgeRating" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="BarOrder" EntityType="Self.BarOrder" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="BarOrderBarTable" EntityType="Self.BarOrderBarTable" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="BarTable" EntityType="Self.BarTable" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="DeliverySlip" EntityType="Self.DeliverySlip" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="InvoiceAddress" EntityType="Self.InvoiceAddress" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="InvoicePosition" EntityType="Self.InvoicePosition" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="NutriantContent" EntityType="Self.NutriantContent" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="OrderPosition" EntityType="Self.OrderPosition" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="Waiter" EntityType="Self.Waiter" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="ZipCode" EntityType="Self.ZipCode" Schema="theke" store:Type="Tables" />
+          <AssociationSet Name="fk_BarOrder_Waiter" Association="Self.fk_BarOrder_Waiter">
+            <End Role="Waiter" EntitySet="Waiter" />
+            <End Role="BarOrder" EntitySet="BarOrder" />
+          </AssociationSet>
+          <AssociationSet Name="fk_BarOrderBarTable_BarOrder" Association="Self.fk_BarOrderBarTable_BarOrder">
+            <End Role="BarOrder" EntitySet="BarOrder" />
+            <End Role="BarOrderBarTable" EntitySet="BarOrderBarTable" />
+          </AssociationSet>
+          <AssociationSet Name="fk_BarOrderBarTable_BarTable" Association="Self.fk_BarOrderBarTable_BarTable">
+            <End Role="BarTable" EntitySet="BarTable" />
+            <End Role="BarOrderBarTable" EntitySet="BarOrderBarTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DeliverySlip_Storage" Association="Self.fk_DeliverySlip_Storage">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="DeliverySlip" EntitySet="DeliverySlip" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DeliverySlip_Supplier" Association="Self.fk_DeliverySlip_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="DeliverySlip" EntitySet="DeliverySlip" />
+          </AssociationSet>
+          <AssociationSet Name="fk_InvoiceInvoiceAddressID" Association="Self.fk_InvoiceInvoiceAddressID">
+            <End Role="InvoiceAddress" EntitySet="InvoiceAddress" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_InvoicePositionInvoiceID" Association="Self.fk_InvoicePositionInvoiceID">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="InvoicePosition" EntitySet="InvoicePosition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderPosition_PriceHistory" Association="Self.fk_OrderPosition_PriceHistory">
+            <End Role="PriceHistory" EntitySet="PriceHistory" />
+            <End Role="OrderPosition" EntitySet="OrderPosition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PriceHistoryProduct" Association="Self.fk_PriceHistoryProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PriceHistory" EntitySet="PriceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_AgeRating" Association="Self.fk_Product_AgeRating">
+            <End Role="AgeRating" EntitySet="AgeRating" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_AspNetUsers_CreatedBy" Association="Self.fk_Product_AspNetUsers_CreatedBy">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_AspNetUsers_ModifiedBy" Association="Self.fk_Product_AspNetUsers_ModifiedBy">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Category" Association="Self.fk_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_NutriantContent" Association="Self.fk_Product_NutriantContent">
+            <End Role="NutriantContent" EntitySet="NutriantContent" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Producer" Association="Self.fk_Product_Producer">
+            <End Role="Producer" EntitySet="Producer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_ProductUnit" Association="Self.fk_Product_ProductUnit">
+            <End Role="ProductUnit" EntitySet="ProductUnit" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reservation_BarTable" Association="Self.fk_Reservation_BarTable">
+            <End Role="BarTable" EntitySet="BarTable" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Storage_Product" Association="Self.fk_Storage_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Storage" EntitySet="Storage" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Waiter_AspNetUsers" Association="Self.fk_Waiter_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Waiter" EntitySet="Waiter" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ZipCodeID" Association="Self.fk_ZipCodeID">
+            <End Role="ZipCode" EntitySet="ZipCode" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="thekeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Product_AspNetUsers_CreatedBy" FromRole="AspNetUsers" ToRole="Product" />
+          <NavigationProperty Name="Product1" Relationship="Self.fk_Product_AspNetUsers_ModifiedBy" FromRole="AspNetUsers" ToRole="Product" />
+          <NavigationProperty Name="Waiter" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="AspNetUsers" ToRole="Waiter" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AgeRating">
+          <Key>
+            <PropertyRef Name="AgeRatingID" />
+          </Key>
+          <Property Name="AgeRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Product_AgeRating" FromRole="AgeRating" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="BarOrder">
+          <Key>
+            <PropertyRef Name="BarOrderID" />
+          </Key>
+          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
+          <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PoitionID" Type="Int32" Nullable="false" />
+          <Property Name="WaiterID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Waiter" Relationship="Self.fk_BarOrder_Waiter" FromRole="BarOrder" ToRole="Waiter" />
+          <NavigationProperty Name="BarTable" Relationship="Self.BarOrderBarTable" FromRole="BarOrder" ToRole="BarTable" />
+        </EntityType>
+        <EntityType Name="BarTable">
+          <Key>
+            <PropertyRef Name="BarTableID" />
+          </Key>
+          <Property Name="BarTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionX" Type="Int32" />
+          <Property Name="PositionY" Type="Int32" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="SeatAmount" Type="Int32" />
+          <Property Name="TableName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reservation" Relationship="Self.fk_Reservation_BarTable" FromRole="BarTable" ToRole="Reservation" />
+          <NavigationProperty Name="BarOrder" Relationship="Self.BarOrderBarTable" FromRole="BarTable" ToRole="BarOrder" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="DeliverySlip">
+          <Key>
+            <PropertyRef Name="DeliverySlipID" />
+          </Key>
+          <Property Name="DeliverySlipID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="DeliverySlipNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BillID" Type="Int32" Nullable="false" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Storage" Relationship="Self.fk_DeliverySlip_Storage" FromRole="DeliverySlip" ToRole="Storage" />
+          <NavigationProperty Name="Supplier" Relationship="Self.fk_DeliverySlip_Supplier" FromRole="DeliverySlip" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="NutriantContent">
+          <Key>
+            <PropertyRef Name="NutrinantContentID" />
+          </Key>
+          <Property Name="NutrinantContentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Energy" Type="Double" />
+          <Property Name="Fat" Type="Double" />
+          <Property Name="SutartedFat" Type="Double" />
+          <Property Name="Carbohydrate" Type="Double" />
+          <Property Name="Sugar" Type="Double" />
+          <Property Name="Albumen" Type="Double" />
+          <Property Name="Salt" Type="Double" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Product_NutriantContent" FromRole="NutriantContent" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderPosition">
+          <Key>
+            <PropertyRef Name="OrderPositionID" />
+          </Key>
+          <Property Name="OrderPositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceHistoryID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PriceHistory" Relationship="Self.fk_OrderPosition_PriceHistory" FromRole="OrderPosition" ToRole="PriceHistory" />
+        </EntityType>
+        <EntityType Name="PriceHistory">
+          <Key>
+            <PropertyRef Name="PriceHistoryID" />
+          </Key>
+          <Property Name="PriceHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="OrderPosition" Relationship="Self.fk_OrderPosition_PriceHistory" FromRole="PriceHistory" ToRole="OrderPosition" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_PriceHistoryProduct" FromRole="PriceHistory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="ProducerID" />
+          </Key>
+          <Property Name="ProducerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Product_Producer" FromRole="Producer" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AgeRatingID" Type="Int32" Nullable="false" />
+          <Property Name="ProductUnitID" Type="Int32" Nullable="false" />
+          <Property Name="ProducerID" Type="Int32" Nullable="false" />
+          <Property Name="AlcoholAmount" Type="Int32" Nullable="false" />
+          <Property Name="NutriantContentID" Type="Int32" Nullable="false" />
+          <Property Name="EanNumber" Type="Int32" />
+          <Property Name="Deposit" Type="Int32" Nullable="false" />
+          <Property Name="ItemAmount" Type="Int32" Nullable="false" />
+          <Property Name="CategorieID" Type="Int32" Nullable="false" />
+          <Property Name="MinPrice" Type="Double" Nullable="false" />
+          <Property Name="MaxPricce" Type="Double" Nullable="false" />
+          <Property Name="AveragePurchasePrice" Type="Int32" />
+          <Property Name="CreatedByID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedByID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModfiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_Product_AspNetUsers_CreatedBy" FromRole="Product" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="Self.fk_Product_AspNetUsers_ModifiedBy" FromRole="Product" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AgeRating" Relationship="Self.fk_Product_AgeRating" FromRole="Product" ToRole="AgeRating" />
+          <NavigationProperty Name="Category" Relationship="Self.fk_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="NutriantContent" Relationship="Self.fk_Product_NutriantContent" FromRole="Product" ToRole="NutriantContent" />
+          <NavigationProperty Name="PriceHistory" Relationship="Self.fk_PriceHistoryProduct" FromRole="Product" ToRole="PriceHistory" />
+          <NavigationProperty Name="Producer" Relationship="Self.fk_Product_Producer" FromRole="Product" ToRole="Producer" />
+          <NavigationProperty Name="ProductUnit" Relationship="Self.fk_Product_ProductUnit" FromRole="Product" ToRole="ProductUnit" />
+          <NavigationProperty Name="Storage" Relationship="Self.fk_Storage_Product" FromRole="Product" ToRole="Storage" />
+        </EntityType>
+        <EntityType Name="ProductUnit">
+          <Key>
+            <PropertyRef Name="ProductUnitID" />
+          </Key>
+          <Property Name="ProductUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Volume" Type="Int32" Nullable="false" />
+          <Property Name="LitreAmount" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Product_ProductUnit" FromRole="ProductUnit" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonAmount" Type="Int32" Nullable="false" />
+          <Property Name="BarTableID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BarTable" Relationship="Self.fk_Reservation_BarTable" FromRole="Reservation" ToRole="BarTable" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="StorageID" />
+          </Key>
+          <Property Name="StorageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DeliverySlip" Relationship="Self.fk_DeliverySlip_Storage" FromRole="Storage" ToRole="DeliverySlip" />
+          <NavigationProperty Name="Product" Relationship="Self.fk_Storage_Product" FromRole="Storage" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StreetName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StreetNumber" Type="Int32" Nullable="false" />
+          <Property Name="ZipCodeID" Type="Int32" Nullable="false" />
+          <Property Name="OwnCustomerID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DeliverySlip" Relationship="Self.fk_DeliverySlip_Supplier" FromRole="Supplier" ToRole="DeliverySlip" />
+          <NavigationProperty Name="ZipCode" Relationship="Self.fk_ZipCodeID" FromRole="Supplier" ToRole="ZipCode" />
+        </EntityType>
+        <EntityType Name="Waiter">
+          <Key>
+            <PropertyRef Name="WaiterID" />
+          </Key>
+          <Property Name="WaiterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nicname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="Waiter" ToRole="AspNetUsers" />
+          <NavigationProperty Name="BarOrder" Relationship="Self.fk_BarOrder_Waiter" FromRole="Waiter" ToRole="BarOrder" />
+        </EntityType>
+        <EntityType Name="ZipCode">
+          <Key>
+            <PropertyRef Name="ZipCodeID" />
+          </Key>
+          <Property Name="ZipCodeID" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode1" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="Self.fk_ZipCodeID" FromRole="ZipCode" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_AspNetUsers_CreatedBy">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CreatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_AspNetUsers_ModifiedBy">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ModifiedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Waiter_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Waiter" Type="Self.Waiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Waiter">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_AgeRating">
+          <End Role="AgeRating" Type="Self.AgeRating" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeRating">
+              <PropertyRef Name="AgeRatingID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="AgeRatingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_BarOrder_Waiter">
+          <End Role="Waiter" Type="Self.Waiter" Multiplicity="1" />
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Waiter">
+              <PropertyRef Name="WaiterID" />
+            </Principal>
+            <Dependent Role="BarOrder">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reservation_BarTable">
+          <End Role="BarTable" Type="Self.BarTable" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BarTable">
+              <PropertyRef Name="BarTableID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="BarTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategorieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DeliverySlip_Storage">
+          <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+          <End Role="DeliverySlip" Type="Self.DeliverySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storage">
+              <PropertyRef Name="StorageID" />
+            </Principal>
+            <Dependent Role="DeliverySlip">
+              <PropertyRef Name="StorageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DeliverySlip_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="DeliverySlip" Type="Self.DeliverySlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="DeliverySlip">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_NutriantContent">
+          <End Role="NutriantContent" Type="Self.NutriantContent" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NutriantContent">
+              <PropertyRef Name="NutrinantContentID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="NutriantContentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderPosition_PriceHistory">
+          <End Role="PriceHistory" Type="Self.PriceHistory" Multiplicity="1" />
+          <End Role="OrderPosition" Type="Self.OrderPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceHistory">
+              <PropertyRef Name="PriceHistoryID" />
+            </Principal>
+            <Dependent Role="OrderPosition">
+              <PropertyRef Name="PriceHistoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PriceHistoryProduct">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PriceHistory" Type="Self.PriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="PriceHistory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Producer">
+          <End Role="Producer" Type="Self.Producer" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producer">
+              <PropertyRef Name="ProducerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProducerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_ProductUnit">
+          <End Role="ProductUnit" Type="Self.ProductUnit" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductUnit">
+              <PropertyRef Name="ProductUnitID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductUnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Storage_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ZipCodeID">
+          <End Role="ZipCode" Type="Self.ZipCode" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZipCode">
+              <PropertyRef Name="ZipCodeID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="ZipCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <Association Name="BarOrderBarTable">
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
+          <End Role="BarTable" Type="Self.BarTable" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="thekeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="AgeRating" EntityType="Self.AgeRating" />
+          <EntitySet Name="BarOrder" EntityType="Self.BarOrder" />
+          <EntitySet Name="BarTable" EntityType="Self.BarTable" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="DeliverySlip" EntityType="Self.DeliverySlip" />
+          <EntitySet Name="NutriantContent" EntityType="Self.NutriantContent" />
+          <EntitySet Name="OrderPosition" EntityType="Self.OrderPosition" />
+          <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="Waiter" EntityType="Self.Waiter" />
+          <EntitySet Name="ZipCode" EntityType="Self.ZipCode" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_AspNetUsers_CreatedBy" Association="Self.fk_Product_AspNetUsers_CreatedBy">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_AspNetUsers_ModifiedBy" Association="Self.fk_Product_AspNetUsers_ModifiedBy">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Waiter_AspNetUsers" Association="Self.fk_Waiter_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Waiter" EntitySet="Waiter" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_AgeRating" Association="Self.fk_Product_AgeRating">
+            <End Role="AgeRating" EntitySet="AgeRating" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_BarOrder_Waiter" Association="Self.fk_BarOrder_Waiter">
+            <End Role="Waiter" EntitySet="Waiter" />
+            <End Role="BarOrder" EntitySet="BarOrder" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reservation_BarTable" Association="Self.fk_Reservation_BarTable">
+            <End Role="BarTable" EntitySet="BarTable" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Category" Association="Self.fk_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DeliverySlip_Storage" Association="Self.fk_DeliverySlip_Storage">
+            <End Role="Storage" EntitySet="Storage" />
+            <End Role="DeliverySlip" EntitySet="DeliverySlip" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DeliverySlip_Supplier" Association="Self.fk_DeliverySlip_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="DeliverySlip" EntitySet="DeliverySlip" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_NutriantContent" Association="Self.fk_Product_NutriantContent">
+            <End Role="NutriantContent" EntitySet="NutriantContent" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderPosition_PriceHistory" Association="Self.fk_OrderPosition_PriceHistory">
+            <End Role="PriceHistory" EntitySet="PriceHistory" />
+            <End Role="OrderPosition" EntitySet="OrderPosition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PriceHistoryProduct" Association="Self.fk_PriceHistoryProduct">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PriceHistory" EntitySet="PriceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Producer" Association="Self.fk_Product_Producer">
+            <End Role="Producer" EntitySet="Producer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_ProductUnit" Association="Self.fk_Product_ProductUnit">
+            <End Role="ProductUnit" EntitySet="ProductUnit" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Storage_Product" Association="Self.fk_Storage_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Storage" EntitySet="Storage" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ZipCodeID" Association="Self.fk_ZipCodeID">
+            <End Role="ZipCode" EntitySet="ZipCode" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="BarOrderBarTable" Association="Self.BarOrderBarTable">
+            <End Role="BarOrder" EntitySet="BarOrder" />
+            <End Role="BarTable" EntitySet="BarTable" />
+          </AssociationSet>
+          <EntitySet Name="Invoice" EntityType="thekeModel.Invoice" />
+          <EntitySet Name="InvoiceAddress" EntityType="thekeModel.InvoiceAddress" />
+          <EntitySet Name="InvoicePosition" EntityType="thekeModel.InvoicePosition" />
+          <AssociationSet Name="fk_InvoiceInvoiceAddressID" Association="thekeModel.fk_InvoiceInvoiceAddressID">
+            <End Role="InvoiceAddress" EntitySet="InvoiceAddress" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_InvoicePositionInvoiceID" Association="thekeModel.fk_InvoicePositionInvoiceID">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="InvoicePosition" EntitySet="InvoicePosition" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvoiceAddressID" Type="Int32" />
+          <Property Name="Storno" Type="Byte" />
+          <NavigationProperty Name="InvoiceAddress" Relationship="thekeModel.fk_InvoiceInvoiceAddressID" FromRole="Invoice" ToRole="InvoiceAddress" />
+          <NavigationProperty Name="InvoicePosition" Relationship="thekeModel.fk_InvoicePositionInvoiceID" FromRole="Invoice" ToRole="InvoicePosition" />
+        </EntityType>
+        <EntityType Name="InvoiceAddress">
+          <Key>
+            <PropertyRef Name="InvoiceAddressID" />
+          </Key>
+          <Property Name="InvoiceAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titel" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invoice" Relationship="thekeModel.fk_InvoiceInvoiceAddressID" FromRole="InvoiceAddress" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="InvoicePosition">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="thekeModel.fk_InvoicePositionInvoiceID" FromRole="InvoicePosition" ToRole="Invoice" />
+        </EntityType>
+        <Association Name="fk_InvoiceInvoiceAddressID">
+          <End Type="thekeModel.InvoiceAddress" Role="InvoiceAddress" Multiplicity="0..1" />
+          <End Type="thekeModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceAddress">
+              <PropertyRef Name="InvoiceAddressID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="InvoiceAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_InvoicePositionInvoiceID">
+          <End Type="thekeModel.Invoice" Role="Invoice" Multiplicity="1" />
+          <End Type="thekeModel.InvoicePosition" Role="InvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="InvoicePosition">
+              <PropertyRef Name="InvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="thekeModelStoreContainer" CdmEntityContainer="thekeEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="thekeModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="thekeModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="thekeModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="thekeModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgeRating">
+            <EntityTypeMapping TypeName="thekeModel.AgeRating">
+              <MappingFragment StoreEntitySet="AgeRating">
+                <ScalarProperty Name="AgeRatingID" ColumnName="AgeRatingID" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarOrder">
+            <EntityTypeMapping TypeName="thekeModel.BarOrder">
+              <MappingFragment StoreEntitySet="BarOrder">
+                <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="BarOrderBarTableID" ColumnName="BarOrderBarTableID" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="PoitionID" ColumnName="PoitionID" />
+                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarTable">
+            <EntityTypeMapping TypeName="thekeModel.BarTable">
+              <MappingFragment StoreEntitySet="BarTable">
+                <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
+                <ScalarProperty Name="PositionX" ColumnName="PositionX" />
+                <ScalarProperty Name="PositionY" ColumnName="PositionY" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="SeatAmount" ColumnName="SeatAmount" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="thekeModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliverySlip">
+            <EntityTypeMapping TypeName="thekeModel.DeliverySlip">
+              <MappingFragment StoreEntitySet="DeliverySlip">
+                <ScalarProperty Name="DeliverySlipID" ColumnName="DeliverySlipID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="DeliverySlipNumber" ColumnName="DeliverySlipNumber" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NutriantContent">
+            <EntityTypeMapping TypeName="thekeModel.NutriantContent">
+              <MappingFragment StoreEntitySet="NutriantContent">
+                <ScalarProperty Name="NutrinantContentID" ColumnName="NutrinantContentID" />
+                <ScalarProperty Name="Energy" ColumnName="Energy" />
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="SutartedFat" ColumnName="SutartedFat" />
+                <ScalarProperty Name="Carbohydrate" ColumnName="Carbohydrate" />
+                <ScalarProperty Name="Sugar" ColumnName="Sugar" />
+                <ScalarProperty Name="Albumen" ColumnName="Albumen" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderPosition">
+            <EntityTypeMapping TypeName="thekeModel.OrderPosition">
+              <MappingFragment StoreEntitySet="OrderPosition">
+                <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
+                <ScalarProperty Name="PriceHistoryID" ColumnName="PriceHistoryID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceHistory">
+            <EntityTypeMapping TypeName="thekeModel.PriceHistory">
+              <MappingFragment StoreEntitySet="PriceHistory">
+                <ScalarProperty Name="PriceHistoryID" ColumnName="PriceHistoryID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producer">
+            <EntityTypeMapping TypeName="thekeModel.Producer">
+              <MappingFragment StoreEntitySet="Producer">
+                <ScalarProperty Name="ProducerID" ColumnName="ProducerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="thekeModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AgeRatingID" ColumnName="AgeRatingID" />
+                <ScalarProperty Name="ProductUnitID" ColumnName="ProductUnitID" />
+                <ScalarProperty Name="ProducerID" ColumnName="ProducerID" />
+                <ScalarProperty Name="AlcoholAmount" ColumnName="AlcoholAmount" />
+                <ScalarProperty Name="NutriantContentID" ColumnName="NutriantContentID" />
+                <ScalarProperty Name="EanNumber" ColumnName="EanNumber" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+                <ScalarProperty Name="ItemAmount" ColumnName="ItemAmount" />
+                <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="MaxPricce" ColumnName="MaxPricce" />
+                <ScalarProperty Name="AveragePurchasePrice" ColumnName="AveragePurchasePrice" />
+                <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+                <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModfiedDate" ColumnName="ModfiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductUnit">
+            <EntityTypeMapping TypeName="thekeModel.ProductUnit">
+              <MappingFragment StoreEntitySet="ProductUnit">
+                <ScalarProperty Name="ProductUnitID" ColumnName="ProductUnitID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="LitreAmount" ColumnName="LitreAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="thekeModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="PersonAmount" ColumnName="PersonAmount" />
+                <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage">
+            <EntityTypeMapping TypeName="thekeModel.Storage">
+              <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="thekeModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
+                <ScalarProperty Name="ZipCodeID" ColumnName="ZipCodeID" />
+                <ScalarProperty Name="OwnCustomerID" ColumnName="OwnCustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Waiter">
+            <EntityTypeMapping TypeName="thekeModel.Waiter">
+              <MappingFragment StoreEntitySet="Waiter">
+                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+                <ScalarProperty Name="VName" ColumnName="VName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="Nicname" ColumnName="Nicname" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZipCode">
+            <EntityTypeMapping TypeName="thekeModel.ZipCode">
+              <MappingFragment StoreEntitySet="ZipCode">
+                <ScalarProperty Name="ZipCodeID" ColumnName="ZipCodeID" />
+                <ScalarProperty Name="ZipCode1" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="thekeModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BarOrderBarTable" TypeName="thekeModel.BarOrderBarTable" StoreEntitySet="BarOrderBarTable">
+            <EndProperty Name="BarOrder">
+              <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
+            </EndProperty>
+            <EndProperty Name="BarTable">
+              <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Invoice">
+            <EntityTypeMapping TypeName="thekeModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="Storno" ColumnName="Storno" />
+                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceAddress">
+            <EntityTypeMapping TypeName="thekeModel.InvoiceAddress">
+              <MappingFragment StoreEntitySet="InvoiceAddress">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoicePosition">
+            <EntityTypeMapping TypeName="thekeModel.InvoicePosition">
+              <MappingFragment StoreEntitySet="InvoicePosition">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
