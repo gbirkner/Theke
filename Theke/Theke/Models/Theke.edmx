@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="thekeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="thekeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -563,31 +563,31 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="thekeModelStoreContainer">
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AgeRating" EntityType="Self.AgeRating" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="BarOrder" EntityType="Self.BarOrder" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="BarOrderBarTable" EntityType="Self.BarOrderBarTable" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="BarTable" EntityType="Self.BarTable" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Category" EntityType="Self.Category" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="DeliverySlip" EntityType="Self.DeliverySlip" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="InvoiceAddress" EntityType="Self.InvoiceAddress" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="InvoicePosition" EntityType="Self.InvoicePosition" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="NutriantContent" EntityType="Self.NutriantContent" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="OrderPosition" EntityType="Self.OrderPosition" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Producer" EntityType="Self.Producer" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="Waiter" EntityType="Self.Waiter" Schema="theke" store:Type="Tables" />
-          <EntitySet Name="ZipCode" EntityType="Self.ZipCode" Schema="theke" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="AgeRating" EntityType="Self.AgeRating" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="BarOrder" EntityType="Self.BarOrder" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="BarOrderBarTable" EntityType="Self.BarOrderBarTable" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="BarTable" EntityType="Self.BarTable" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="DeliverySlip" EntityType="Self.DeliverySlip" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="InvoiceAddress" EntityType="Self.InvoiceAddress" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="InvoicePosition" EntityType="Self.InvoicePosition" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="NutriantContent" EntityType="Self.NutriantContent" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="OrderPosition" EntityType="Self.OrderPosition" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Producer" EntityType="Self.Producer" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Waiter" EntityType="Self.Waiter" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ZipCode" EntityType="Self.ZipCode" Schema="theke" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="fk_BarOrder_Waiter" Association="Self.fk_BarOrder_Waiter">
             <End Role="Waiter" EntitySet="Waiter" />
             <End Role="BarOrder" EntitySet="BarOrder" />
@@ -688,7 +688,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="thekeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="thekeModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -701,7 +701,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -745,7 +745,7 @@
           <Key>
             <PropertyRef Name="AgeRatingID" />
           </Key>
-          <Property Name="AgeRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgeRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Age" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.fk_Product_AgeRating" FromRole="AgeRating" ToRole="Product" />
         </EntityType>
@@ -753,7 +753,7 @@
           <Key>
             <PropertyRef Name="BarOrderID" />
           </Key>
-          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
           <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
@@ -766,7 +766,7 @@
           <Key>
             <PropertyRef Name="BarTableID" />
           </Key>
-          <Property Name="BarTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BarTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PositionX" Type="Int32" />
           <Property Name="PositionY" Type="Int32" />
           <Property Name="Width" Type="Int32" />
@@ -780,7 +780,7 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.fk_Product_Category" FromRole="Category" ToRole="Product" />
@@ -801,7 +801,7 @@
           <Key>
             <PropertyRef Name="NutrinantContentID" />
           </Key>
-          <Property Name="NutrinantContentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NutrinantContentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Energy" Type="Double" />
           <Property Name="Fat" Type="Double" />
           <Property Name="SutartedFat" Type="Double" />
@@ -815,7 +815,7 @@
           <Key>
             <PropertyRef Name="OrderPositionID" />
           </Key>
-          <Property Name="OrderPositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderPositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PriceHistoryID" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PriceHistory" Relationship="Self.fk_OrderPosition_PriceHistory" FromRole="OrderPosition" ToRole="PriceHistory" />
@@ -824,7 +824,7 @@
           <Key>
             <PropertyRef Name="PriceHistoryID" />
           </Key>
-          <Property Name="PriceHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Double" Nullable="false" />
@@ -835,7 +835,7 @@
           <Key>
             <PropertyRef Name="ProducerID" />
           </Key>
-          <Property Name="ProducerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProducerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.fk_Product_Producer" FromRole="Producer" ToRole="Product" />
         </EntityType>
@@ -843,7 +843,7 @@
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="IsActive" Type="Byte" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -877,7 +877,7 @@
           <Key>
             <PropertyRef Name="ProductUnitID" />
           </Key>
-          <Property Name="ProductUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductUnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Volume" Type="Int32" Nullable="false" />
@@ -888,7 +888,7 @@
           <Key>
             <PropertyRef Name="ReservationID" />
           </Key>
-          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="LName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
@@ -900,7 +900,7 @@
           <Key>
             <PropertyRef Name="StorageID" />
           </Key>
-          <Property Name="StorageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StorageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -924,7 +924,7 @@
           <Key>
             <PropertyRef Name="WaiterID" />
           </Key>
-          <Property Name="WaiterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WaiterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="VName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nicname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1170,7 +1170,7 @@
           <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
           <End Role="BarTable" Type="Self.BarTable" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="thekeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="thekeEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
@@ -1287,7 +1287,7 @@
           <Key>
             <PropertyRef Name="InvoiceID" />
           </Key>
-          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="InvoiceAddressID" Type="Int32" />
           <Property Name="Storno" Type="Byte" />
@@ -1298,7 +1298,7 @@
           <Key>
             <PropertyRef Name="InvoiceAddressID" />
           </Key>
-          <Property Name="InvoiceAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Titel" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Zipcode" Type="Int32" />
@@ -1635,22 +1635,22 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams />
+  </edmx:Designer>
 </edmx:Edmx>

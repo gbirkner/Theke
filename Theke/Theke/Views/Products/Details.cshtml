@@ -1,0 +1,170 @@
+﻿@model Theke.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlcoholAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlcoholAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EanNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EanNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deposit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxPricce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxPricce)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AveragePurchasePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AveragePurchasePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModfiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModfiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers1.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers1.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeRating.AgeRatingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgeRating.AgeRatingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NutriantContent.NutrinantContentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NutriantContent.NutrinantContentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductUnit.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductUnit.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

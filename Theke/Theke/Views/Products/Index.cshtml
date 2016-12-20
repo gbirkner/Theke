@@ -1,0 +1,141 @@
+﻿@model IEnumerable<Theke.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlcoholAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EanNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deposit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxPricce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AveragePurchasePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModfiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUsers1.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeRating.AgeRatingID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NutriantContent.NutrinantContentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductUnit.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlcoholAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EanNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deposit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxPricce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AveragePurchasePrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModfiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUsers1.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgeRating.AgeRatingID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NutriantContent.NutrinantContentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductUnit.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>
