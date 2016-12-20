@@ -78,6 +78,8 @@ public partial class thekeEntities : DbContext
 
     public virtual DbSet<InvoicePosition> InvoicePosition { get; set; }
 
+    public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+
 }
 
 }

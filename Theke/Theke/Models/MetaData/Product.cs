@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Theke.Models.Product
+namespace Theke.Modelss
 {
     [MetadataType(typeof(ProductMetaData))]
     public partial class Product
     {
 
     }
-
+    
     public class ProductMetaData
     {
 
