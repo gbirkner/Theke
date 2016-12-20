@@ -798,7 +798,7 @@
           <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
           <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
           <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PoitionID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
           <Property Name="WaiterID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Waiter" Relationship="Self.fk_BarOrder_Waiter" FromRole="BarOrder" ToRole="Waiter" />
           <NavigationProperty Name="BarTable" Relationship="Self.BarOrderBarTable" FromRole="BarOrder" ToRole="BarTable" />
