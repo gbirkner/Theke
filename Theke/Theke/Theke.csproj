@@ -229,9 +229,6 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>Theke.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DeliverySlip.cs">
       <DependentUpon>Theke.tt</DependentUpon>
     </Compile>
