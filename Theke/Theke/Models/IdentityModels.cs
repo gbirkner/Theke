@@ -29,5 +29,7 @@ namespace Theke.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Theke.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

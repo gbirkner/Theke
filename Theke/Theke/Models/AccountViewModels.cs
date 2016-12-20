@@ -79,6 +79,10 @@ namespace Theke.Models
         [Display(Name = "Kennwort bestätigen")]
         [Compare("Password", ErrorMessage = "Das Kennwort entspricht nicht dem Bestätigungskennwort.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nutzername")]
+        public string UserName { get; set; }
     }
 
     public class ResetPasswordViewModel
