@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Theke.Models.BarOrder>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BarOrderBarTableID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datetime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPositionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Waiter.VName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BarOrderBarTableID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datetime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPositionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Waiter.VName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BarOrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BarOrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BarOrderID })
+        </td>
+    </tr>
+}
+
+</table>
