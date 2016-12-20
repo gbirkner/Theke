@@ -1,2 +1,15 @@
+/--------------------------------------------------------------\
+|                                                              |
+|        Description and Guidlines for merging Branches        |
+|                                                              |
+\--------------------------------------------------------------/
 
-Description and Guidlines for merging Branches
+1.) Bevore changing anything, make a new Branch and make it public.
+
+2.) Then you can work on your Branch.
+
+3.) Only when your code works properly you can think of mergeing it to the master-Branch.
+
+4.) When you're ready to merge to the master-Branch, contact the DatabaseProvider (MD or GB etc) to check if everithing is ok to merge.
+
+
