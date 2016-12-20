@@ -21,5 +21,12 @@ namespace Theke.Controllers {
 
             return View();
         }
+        
+        public ActionResult Tables()
+        {
+            ViewBag.Message = "Ansicht aller Tische.";
+
+            return View();
+        }
     }
 }
