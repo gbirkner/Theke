@@ -2,6 +2,7 @@
 USE Theke;
 
 IF Object_id('theke.DeliverySlip','U') is not Null drop table theke.DeliverySlip;
+IF Object_id('theke.BarOrderOrderPosition','U') is not Null drop table theke.BarOrderOrderPosition;
 IF Object_id('theke.Storage','U') is not Null drop table theke.Storage;
 IF Object_id('theke.Supplier','U') is not Null drop table theke.Supplier;
 IF Object_id('theke.ZipCode','U') is not Null drop table theke.ZipCode;
