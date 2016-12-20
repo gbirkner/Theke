@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="thekeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -605,7 +595,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="thekeModelStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -801,21 +790,6 @@
           <Property Name="Age" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.fk_Product_AgeRating" FromRole="AgeRating" ToRole="Product" />
         </EntityType>
-        <EntityType Name="BarOrder">
-          <Key>
-            <PropertyRef Name="BarOrderID" />
-          </Key>
-          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
-          <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
-          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <Property Name="WaiterID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Waiter" Relationship="Self.fk_BarOrder_Waiter" FromRole="BarOrder" ToRole="Waiter" />
-          <NavigationProperty Name="BarTable" Relationship="Self.BarOrderBarTable" FromRole="BarOrder" ToRole="BarTable" />
-          <Property Name="OrderPositionID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OrderPositions" Relationship="thekeModel.BarOrderOrderPosition" FromRole="BarOrder" ToRole="OrderPosition" />
-        </EntityType>
         <EntityType Name="BarTable">
           <Key>
             <PropertyRef Name="BarTableID" />
@@ -828,7 +802,7 @@
           <Property Name="SeatAmount" Type="Int32" />
           <Property Name="TableName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Reservation" Relationship="Self.fk_Reservation_BarTable" FromRole="BarTable" ToRole="Reservation" />
-          <NavigationProperty Name="BarOrder" Relationship="Self.BarOrderBarTable" FromRole="BarTable" ToRole="BarOrder" />
+          <NavigationProperty Name="BarOrders" Relationship="thekeModel.BarOrderBarTable" FromRole="BarTable" ToRole="BarOrder" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -985,7 +959,7 @@
           <Property Name="Nicname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="Waiter" ToRole="AspNetUsers" />
-          <NavigationProperty Name="BarOrder" Relationship="Self.fk_BarOrder_Waiter" FromRole="Waiter" ToRole="BarOrder" />
+          <NavigationProperty Name="BarOrders" Relationship="thekeModel.fk_BarOrder_Waiter" FromRole="Waiter" ToRole="BarOrder" />
         </EntityType>
         <EntityType Name="ZipCode">
           <Key>
@@ -1070,18 +1044,6 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="AgeRatingID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_BarOrder_Waiter">
-          <End Role="Waiter" Type="Self.Waiter" Multiplicity="1" />
-          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Waiter">
-              <PropertyRef Name="WaiterID" />
-            </Principal>
-            <Dependent Role="BarOrder">
-              <PropertyRef Name="WaiterID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1221,17 +1183,12 @@
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
-        <Association Name="BarOrderBarTable">
-          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
-          <End Role="BarTable" Type="Self.BarTable" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="thekeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="AgeRating" EntityType="Self.AgeRating" />
-          <EntitySet Name="BarOrder" EntityType="Self.BarOrder" />
           <EntitySet Name="BarTable" EntityType="Self.BarTable" />
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="DeliverySlip" EntityType="Self.DeliverySlip" />
@@ -1269,10 +1226,6 @@
           <AssociationSet Name="fk_Product_AgeRating" Association="Self.fk_Product_AgeRating">
             <End Role="AgeRating" EntitySet="AgeRating" />
             <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_BarOrder_Waiter" Association="Self.fk_BarOrder_Waiter">
-            <End Role="Waiter" EntitySet="Waiter" />
-            <End Role="BarOrder" EntitySet="BarOrder" />
           </AssociationSet>
           <AssociationSet Name="fk_Reservation_BarTable" Association="Self.fk_Reservation_BarTable">
             <End Role="BarTable" EntitySet="BarTable" />
@@ -1322,10 +1275,6 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="BarOrderBarTable" Association="Self.BarOrderBarTable">
-            <End Role="BarOrder" EntitySet="BarOrder" />
-            <End Role="BarTable" EntitySet="BarTable" />
-          </AssociationSet>
           <EntitySet Name="Invoice" EntityType="thekeModel.Invoice" />
           <EntitySet Name="InvoiceAddress" EntityType="thekeModel.InvoiceAddress" />
           <EntitySet Name="InvoicePosition" EntityType="thekeModel.InvoicePosition" />
@@ -1337,11 +1286,19 @@
             <End Role="Invoice" EntitySet="Invoice" />
             <End Role="InvoicePosition" EntitySet="InvoicePosition" />
           </AssociationSet>
+          <EntitySet Name="BarOrders" EntityType="thekeModel.BarOrder" />
+          <AssociationSet Name="fk_BarOrder_Waiter" Association="thekeModel.fk_BarOrder_Waiter">
+            <End Role="Waiter" EntitySet="Waiter" />
+            <End Role="BarOrder" EntitySet="BarOrders" />
+          </AssociationSet>
+          <AssociationSet Name="BarOrderBarTable" Association="thekeModel.BarOrderBarTable">
+            <End Role="BarOrder" EntitySet="BarOrders" />
+            <End Role="BarTable" EntitySet="BarTable" />
+          </AssociationSet>
           <AssociationSet Name="BarOrderOrderPosition" Association="thekeModel.BarOrderOrderPosition">
-            <End Role="BarOrder" EntitySet="BarOrder" />
+            <End Role="BarOrder" EntitySet="BarOrders" />
             <End Role="OrderPosition" EntitySet="OrderPosition" />
           </AssociationSet>
-          <EntitySet Name="C__MigrationHistory" EntityType="thekeModel.C__MigrationHistory" />
         </EntityContainer>
         <EntityType Name="Invoice">
           <Key>
@@ -1403,20 +1360,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BarOrder">
+          <Key>
+            <PropertyRef Name="BarOrderID" />
+          </Key>
+          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
+          <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderPositionID" Type="Int32" Nullable="false" />
+          <Property Name="WaiterID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Waiter" Relationship="thekeModel.fk_BarOrder_Waiter" FromRole="BarOrder" ToRole="Waiter" />
+          <NavigationProperty Name="BarTables" Relationship="thekeModel.BarOrderBarTable" FromRole="BarOrder" ToRole="BarTable" />
+          <NavigationProperty Name="OrderPositions" Relationship="thekeModel.BarOrderOrderPosition" FromRole="BarOrder" ToRole="OrderPosition" />
+        </EntityType>
+        <Association Name="fk_BarOrder_Waiter">
+          <End Type="thekeModel.Waiter" Role="Waiter" Multiplicity="1" />
+          <End Type="thekeModel.BarOrder" Role="BarOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Waiter">
+              <PropertyRef Name="WaiterID" />
+            </Principal>
+            <Dependent Role="BarOrder">
+              <PropertyRef Name="WaiterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BarOrderBarTable">
+          <End Type="thekeModel.BarOrder" Role="BarOrder" Multiplicity="*" />
+          <End Type="thekeModel.BarTable" Role="BarTable" Multiplicity="*" />
+        </Association>
         <Association Name="BarOrderOrderPosition">
           <End Type="thekeModel.BarOrder" Role="BarOrder" Multiplicity="*" />
           <End Type="thekeModel.OrderPosition" Role="OrderPosition" Multiplicity="*" />
         </Association>
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1473,18 +1450,6 @@
               <MappingFragment StoreEntitySet="AgeRating">
                 <ScalarProperty Name="AgeRatingID" ColumnName="AgeRatingID" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BarOrder">
-            <EntityTypeMapping TypeName="thekeModel.BarOrder">
-              <MappingFragment StoreEntitySet="BarOrder">
-                <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
-                <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
-                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
-                <ScalarProperty Name="BarOrderBarTableID" ColumnName="BarOrderBarTableID" />
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1662,14 +1627,6 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="BarOrderBarTable" TypeName="thekeModel.BarOrderBarTable" StoreEntitySet="BarOrderBarTable">
-            <EndProperty Name="BarOrder">
-              <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
-            </EndProperty>
-            <EndProperty Name="BarTable">
-              <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Invoice">
             <EntityTypeMapping TypeName="thekeModel.Invoice">
               <MappingFragment StoreEntitySet="Invoice">
@@ -1704,6 +1661,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BarOrders">
+            <EntityTypeMapping TypeName="thekeModel.BarOrder">
+              <MappingFragment StoreEntitySet="BarOrder">
+                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+                <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="BarOrderBarTableID" ColumnName="BarOrderBarTableID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BarOrderBarTable" TypeName="thekeModel.BarOrderBarTable" StoreEntitySet="BarOrderBarTable">
+            <EndProperty Name="BarTable">
+              <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
+            </EndProperty>
+            <EndProperty Name="BarOrder">
+              <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="BarOrderOrderPosition" TypeName="thekeModel.BarOrderOrderPosition" StoreEntitySet="BarOrderOrderPosition">
             <EndProperty Name="OrderPosition">
               <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
@@ -1712,16 +1689,6 @@
               <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="thekeModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
