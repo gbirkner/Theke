@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theke", "Theke\Theke.csproj", "{98A66EA3-96B7-4821-8533-194B0E716389}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1F19F81-6912-4EE5-B80A-F018A8350A57}"
+	ProjectSection(SolutionItems) = preProject
+		Theke\Web.config = Theke\Web.config
+		Theke\Web.Debug.config = Theke\Web.Debug.config
+		Theke\Web.Release.config = Theke\Web.Release.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
