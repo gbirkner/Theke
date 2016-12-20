@@ -154,18 +154,27 @@ CREATE TABLE [theke].[BarTable] (
 
 
 CREATE TABLE [theke].[BarOrder] (
-	BarOrderID				int			NOT NULL Identity(0,1),
+	BarOrderID			int			NOT NULL Identity(0,1),
 	PaymentStatus		tinyint 	NOT NULL,
-	BarOrderBarTableID		int			NOT NULL,
+	BarOrderBarTableID	int			NOT NULL,
 	Datetime			datetime	NOT NULL,
-	PoitionID			int			NOT NULL,
+	OrderPositionID		int			NOT NULL,
 	WaiterID			int			NOT NULL,
 	
 	CONSTRAINT pk_BarOrder PRIMARY KEY (BarOrderID),
 	
 	CONSTRAINT fk_BarOrder_Waiter FOREIGN KEY (WaiterID) REFERENCES theke.Waiter(WaiterID),
 	
-	
+);
+
+CREATE TABLE [theke].[BarOrderOrderPosition] (
+	BarOrderID		int NOT NULL,
+	OrderPositionID		int NOT NULL,
+
+	CONSTRAINT pk_BarOrder_BarTable PRIMARY KEY (BarOrderID, OrderPositionID),
+
+	CONSTRAINT fk_BarOrder FOREIGN KEY (BarOrderID) REFERENCES theke.BarOrder(BarOrderID),
+	CONSTRAINT fk_OrderPosition FOREIGN KEY (OrderPositionID) REFERENCES theke.OrderPosition(OrderPositionID),
 );
 
 

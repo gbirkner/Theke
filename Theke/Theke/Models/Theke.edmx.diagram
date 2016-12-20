@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b7bdb2952a2b4ed4ad08c8cd8d78bbde" Name="Diagram1" ZoomLevel="21">
+      <Diagram DiagramId="b7bdb2952a2b4ed4ad08c8cd8d78bbde" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="thekeModel.AspNetRoles" Width="1.5" PointX="1.875" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="thekeModel.AspNetUserClaims" Width="1.5" PointX="9.875" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="thekeModel.AspNetUserLogins" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
@@ -50,6 +50,7 @@
         <EntityTypeShape EntityType="thekeModel.InvoicePosition" Width="1.5" PointX="26.5" PointY="3.25" />
         <AssociationConnector Association="thekeModel.fk_InvoiceInvoiceAddressID" />
         <AssociationConnector Association="thekeModel.fk_InvoicePositionInvoiceID" />
+        <AssociationConnector Association="thekeModel.BarOrderOrderPosition" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

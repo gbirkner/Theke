@@ -18,6 +18,7 @@ namespace Theke.Models
         public BarOrder()
         {
             this.BarTable = new HashSet<BarTable>();
+            this.OrderPositions = new HashSet<OrderPosition>();
         }
     
         public int BarOrderID { get; set; }
@@ -26,9 +27,12 @@ namespace Theke.Models
         public System.DateTime Datetime { get; set; }
         public int PoitionID { get; set; }
         public int WaiterID { get; set; }
+        public int OrderPositionID { get; set; }
     
         public virtual Waiter Waiter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BarTable> BarTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderPosition> OrderPositions { get; set; }
     }
 }
