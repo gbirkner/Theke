@@ -17,7 +17,7 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Waiter()
         {
-            this.BarOrder = new HashSet<BarOrder>();
+            this.BarOrders = new HashSet<BarOrder>();
         }
     
         public int WaiterID { get; set; }
@@ -28,6 +28,6 @@ namespace Theke.Models
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BarOrder> BarOrder { get; set; }
+        public virtual ICollection<BarOrder> BarOrders { get; set; }
     }
 }

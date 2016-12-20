@@ -17,7 +17,7 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BarOrder()
         {
-            this.BarTable = new HashSet<BarTable>();
+            this.BarTables = new HashSet<BarTable>();
             this.OrderPositions = new HashSet<OrderPosition>();
         }
     
@@ -25,13 +25,12 @@ namespace Theke.Models
         public byte PaymentStatus { get; set; }
         public int BarOrderBarTableID { get; set; }
         public System.DateTime Datetime { get; set; }
-        public int PositionID { get; set; }
-        public int WaiterID { get; set; }
         public int OrderPositionID { get; set; }
+        public int WaiterID { get; set; }
     
         public virtual Waiter Waiter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BarTable> BarTable { get; set; }
+        public virtual ICollection<BarTable> BarTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderPosition> OrderPositions { get; set; }
     }

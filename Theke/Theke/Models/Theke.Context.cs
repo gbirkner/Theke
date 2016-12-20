@@ -30,7 +30,6 @@ namespace Theke.Models
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<AgeRating> AgeRating { get; set; }
-        public virtual DbSet<BarOrder> BarOrder { get; set; }
         public virtual DbSet<BarTable> BarTable { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<DeliverySlip> DeliverySlip { get; set; }
@@ -48,5 +47,6 @@ namespace Theke.Models
         public virtual DbSet<Invoice> Invoice { get; set; }
         public virtual DbSet<InvoiceAddress> InvoiceAddress { get; set; }
         public virtual DbSet<InvoicePosition> InvoicePosition { get; set; }
+        public virtual DbSet<BarOrder> BarOrders { get; set; }
     }
 }
