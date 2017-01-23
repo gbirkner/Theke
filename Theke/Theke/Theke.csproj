@@ -171,9 +171,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CategoriesOrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductsOrderController.cs" />
     <Compile Include="Controllers\WaitersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -353,6 +355,16 @@
     <Content Include="Views\Waiters\Details.cshtml" />
     <Content Include="Views\Waiters\Edit.cshtml" />
     <Content Include="Views\Waiters\Index.cshtml" />
+    <Content Include="Views\CategoriesOrder\Create.cshtml" />
+    <Content Include="Views\CategoriesOrder\Delete.cshtml" />
+    <Content Include="Views\CategoriesOrder\Details.cshtml" />
+    <Content Include="Views\CategoriesOrder\Edit.cshtml" />
+    <Content Include="Views\CategoriesOrder\Index.cshtml" />
+    <Content Include="Views\ProductsOrder\Create.cshtml" />
+    <Content Include="Views\ProductsOrder\Delete.cshtml" />
+    <Content Include="Views\ProductsOrder\Details.cshtml" />
+    <Content Include="Views\ProductsOrder\Edit.cshtml" />
+    <Content Include="Views\ProductsOrder\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -377,6 +389,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DanielConfig|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
