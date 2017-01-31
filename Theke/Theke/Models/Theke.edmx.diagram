@@ -47,7 +47,7 @@
         <EntityTypeShape EntityType="thekeModel.InvoicePosition" Width="1.5" PointX="26.5" PointY="3.25" />
         <AssociationConnector Association="thekeModel.fk_InvoiceInvoiceAddressID" />
         <AssociationConnector Association="thekeModel.fk_InvoicePositionInvoiceID" />
-        <EntityTypeShape EntityType="thekeModel.BarOrder" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="thekeModel.BarOrder" Width="2.25" PointX="12.375" PointY="0.75" />
         <AssociationConnector Association="thekeModel.fk_BarOrder_Waiter" />
         <AssociationConnector Association="thekeModel.BarOrderBarTable" />
         <AssociationConnector Association="thekeModel.BarOrderOrderPosition" />

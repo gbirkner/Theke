@@ -18,8 +18,30 @@ namespace Theke.Controllers
         // GET: BarTables
         public ActionResult Index()
         {
-            TableOrderViewModel list = new TableOrderViewModel(db.BarTable.ToList(), db.BarOrders.ToList());
-            return View(list);
+
+            List<BarTableViewModel> bartableviewmodels = new List<BarTableViewModel>();
+            //TableOrderViewModel list = new TableOrderViewModel(db.BarTable.ToList(), db.BarOrders.ToList());
+            List<BarTable> bartables = db.BarTable.ToList();
+            foreach (BarTable bartable in bartables)
+            {
+                List<BarOrder> barorders = bartable.BarOrders.ToList();
+                BarTableViewModel name = new BarTableViewModel();
+                name.SeatAmount = bartable.SeatAmount;
+                name.TableName = bartable.TableName;
+                name.BarTableID = bartable.BarTableID;
+                name.hasOpenPaymentStatus = 1;
+                foreach (BarOrder barorder in barorders)
+                {
+                   if (barorder.PaymentStatus == 0)
+                    {
+                        name.hasOpenPaymentStatus = barorder.PaymentStatus;
+                    }
+                    
+                }
+                bartableviewmodels.Add(name);
+            }
+            
+            return View(bartableviewmodels);
         }
 
         // GET: BarTables/Details/5

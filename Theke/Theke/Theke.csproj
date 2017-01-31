@@ -263,6 +263,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Theke.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\BarTableViewModel.cs" />
     <Compile Include="Models\ViewModels\TableOrderViewModel.cs" />
     <Compile Include="Models\Waiter.cs">
       <DependentUpon>Theke.tt</DependentUpon>
