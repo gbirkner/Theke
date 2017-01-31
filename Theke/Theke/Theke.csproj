@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarTablesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoriesOrderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -262,6 +263,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Theke.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\TableOrderViewModel.cs" />
     <Compile Include="Models\Waiter.cs">
       <DependentUpon>Theke.tt</DependentUpon>
     </Compile>
@@ -365,6 +367,11 @@
     <Content Include="Views\ProductsOrder\Details.cshtml" />
     <Content Include="Views\ProductsOrder\Edit.cshtml" />
     <Content Include="Views\ProductsOrder\Index.cshtml" />
+    <Content Include="Views\BarTables\Create.cshtml" />
+    <Content Include="Views\BarTables\Delete.cshtml" />
+    <Content Include="Views\BarTables\Details.cshtml" />
+    <Content Include="Views\BarTables\Edit.cshtml" />
+    <Content Include="Views\BarTables\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

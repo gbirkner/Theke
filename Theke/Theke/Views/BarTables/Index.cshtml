@@ -1,0 +1,93 @@
+﻿@model Theke.Models.ViewModels.TableOrderViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tischansicht</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bartablelist.First().PositionX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bartablelist.First().PositionY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bartablelist.First().Width)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bartablelist.First().Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bartablelist.First().SeatAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bartablelist.First().TableName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.bartablelist) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Width)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TableName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BarTableID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BarTableID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BarTableID })
+        </td>
+    </tr>
+    
+    
+    
+    
+    
+
+}
+
+</table>
+
+
+
+@foreach (var item in Model.bartablelist)
+{ 
+    <p>
+        <button type="button">@item.TableName</button>
+        
+        @Html.DisplayNameFor(model => model.bartablelist.First().SeatAmount): 
+        @Html.DisplayFor(modelItem => item.SeatAmount)
+
+        @Html.DisplayNameFor(model => model.barorderlist.First().PaymentStatus):
+        
+        
+
+
+    </p>
+
+
+}
+
+
+
+

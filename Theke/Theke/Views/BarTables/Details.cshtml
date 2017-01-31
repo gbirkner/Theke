@@ -1,0 +1,66 @@
+﻿@model Theke.Models.BarTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BarTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositionX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PositionY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TableName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TableName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BarTableID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
