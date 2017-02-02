@@ -17,7 +17,7 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ZipCode()
         {
-            this.Supplier = new HashSet<Supplier>();
+            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ZipCodeID { get; set; }
@@ -26,6 +26,6 @@ namespace Theke.Models
         public string Country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Supplier { get; set; }
+        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

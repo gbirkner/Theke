@@ -1,0 +1,58 @@
+﻿@model Theke.Models.BarOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BarOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BarOrderBarTableID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BarOrderBarTableID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderPositionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderPositionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Waiter.VName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Waiter.VName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BarOrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

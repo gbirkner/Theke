@@ -9,6 +9,9 @@ namespace Theke.Models
     // Sie können Profildaten für den Benutzer durch Hinzufügen weiterer Eigenschaften zur ApplicationUser-Klasse hinzufügen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=317594".
     public class ApplicationUser : IdentityUser
     {
+        public string VName { get; set; }
+        public string LaName { get; set; }
+        public string LName { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Beachten Sie, dass der "authenticationType" mit dem in "CookieAuthenticationOptions.AuthenticationType" definierten Typ übereinstimmen muss.
@@ -17,11 +20,18 @@ namespace Theke.Models
             return userIdentity;
         }
     }
+    public class UserManager : UserManager<ApplicationUser>
+    {
+        public UserManager()
+            : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
+        {
+        }
+    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("IdentityConnection", throwIfV1Schema: false)
         {
         }
 
@@ -29,6 +39,6 @@ namespace Theke.Models
         {
             return new ApplicationDbContext();
         }
-
+        
     }
 }

@@ -57,6 +57,7 @@ namespace Theke.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            Session["dummy"] = "dummy";
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -151,7 +152,7 @@ namespace Theke.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Nicname, Email = model.Email, VName = model.VName, LaName = model.LaName, LName = model.LaName + " " + model.VName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -322,7 +323,7 @@ namespace Theke.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
@@ -346,6 +347,7 @@ namespace Theke.Controllers
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
+
 
         //
         // POST: /Account/ExternalLoginConfirmation

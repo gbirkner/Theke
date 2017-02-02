@@ -1,0 +1,81 @@
+﻿@model Theke.Models.UserRoleData
+
+@{
+    ViewBag.Title = "Nutzer";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Neu", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nickname
+        </th>
+        <th>
+            Vorname
+        </th>
+        <th>
+            Nachname
+        </th>
+        <th>
+            E-Mail
+        </th>
+        <th>
+            Telefonnummer
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.UserData)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Auswählen", "Index", new { id = item.Id }) | 
+                @Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Löschen ", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+@if (Model.Roles != null && Model.Roles.Count() != 0)
+{
+    <h3>Rollen</h3>
+<table class="table">
+    
+        <tr>
+            <th>
+                Bezeichnung
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model.Roles)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+            </tr>
+    }
+    
+
+</table>
+}

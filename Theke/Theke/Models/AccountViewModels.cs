@@ -70,6 +70,18 @@ namespace Theke.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Vorname")]
+        public string VName { get; set; }
+
+        [Required]
+        [Display(Name = "Nachname")]
+        public string LaName { get; set; }
+       
+        [Required]
+        [Display(Name = "Nickname")]
+        public string Nicname { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "\"{0}\" muss mindestens {2} Zeichen lang sein.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Kennwort")]

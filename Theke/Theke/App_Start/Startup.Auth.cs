@@ -54,15 +54,15 @@ namespace Theke
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "259801381106516",
+               appSecret: "0fdb467f767d85358e5a41da76c2a736");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "605449543996-ui653i8pm70tg1t2422dhhdb0gin6oe8.apps.googleusercontent.com",
+                ClientSecret = "2BvtsBRNOKiPcriF9xQ5cl92"
+            });
         }
     }
 }

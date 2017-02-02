@@ -17,7 +17,7 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PriceHistory()
         {
-            this.OrderPosition = new HashSet<OrderPosition>();
+            this.OrderPositions = new HashSet<OrderPosition>();
         }
     
         public int PriceHistoryID { get; set; }
@@ -26,7 +26,7 @@ namespace Theke.Models
         public double Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderPosition> OrderPosition { get; set; }
+        public virtual ICollection<OrderPosition> OrderPositions { get; set; }
         public virtual Product Product { get; set; }
     }
 }

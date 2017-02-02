@@ -17,7 +17,7 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {
-            this.DeliverySlip = new HashSet<DeliverySlip>();
+            this.DeliverySlips = new HashSet<DeliverySlip>();
         }
     
         public int SupplierID { get; set; }
@@ -28,7 +28,7 @@ namespace Theke.Models
         public string OwnCustomerID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DeliverySlip> DeliverySlip { get; set; }
+        public virtual ICollection<DeliverySlip> DeliverySlips { get; set; }
         public virtual ZipCode ZipCode { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Invoice()
         {
-            this.InvoicePosition = new HashSet<InvoicePosition>();
+            this.InvoicePositions = new HashSet<InvoicePosition>();
         }
     
         public int InvoiceID { get; set; }
@@ -27,6 +27,6 @@ namespace Theke.Models
     
         public virtual InvoiceAddress InvoiceAddress { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InvoicePosition> InvoicePosition { get; set; }
+        public virtual ICollection<InvoicePosition> InvoicePositions { get; set; }
     }
 }

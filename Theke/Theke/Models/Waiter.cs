@@ -26,7 +26,7 @@ namespace Theke.Models
         public string Nicname { get; set; }
         public string UserID { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BarOrder> BarOrders { get; set; }
     }

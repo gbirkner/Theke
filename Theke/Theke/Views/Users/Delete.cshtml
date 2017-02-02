@@ -1,0 +1,63 @@
+﻿@model Theke.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Nutzer löschen";
+}
+
+<h2>Nutzer löschen</h2>
+
+<h3>Sínd Sie sich sicher dass der Nutzer gelöscht werden soll?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

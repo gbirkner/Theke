@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="thekeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="thekeModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -55,6 +55,9 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="VName" Type="varchar" MaxLength="100" />
+          <Property Name="LName" Type="varchar" MaxLength="100" />
+          <Property Name="LaName" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="AgeRating">
           <Key>
@@ -594,7 +597,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="thekeModelStoreContainer">
+        <EntityContainer Name="thekeModelsStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -726,11 +729,12 @@
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="thekeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AspNetRoles">
+      <Schema Namespace="thekeModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -738,7 +742,7 @@
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
-        <EntityType Name="AspNetUserClaims">
+        <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -746,9 +750,9 @@
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
-        <EntityType Name="AspNetUserLogins">
+        <EntityType Name="AspNetUserLogin">
           <Key>
             <PropertyRef Name="LoginProvider" />
             <PropertyRef Name="ProviderKey" />
@@ -757,9 +761,9 @@
           <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
-        <EntityType Name="AspNetUsers">
+        <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -775,11 +779,14 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_Product_AspNetUsers_CreatedBy" FromRole="AspNetUsers" ToRole="Product" />
-          <NavigationProperty Name="Product1" Relationship="Self.fk_Product_AspNetUsers_ModifiedBy" FromRole="AspNetUsers" ToRole="Product" />
-          <NavigationProperty Name="Waiter" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="AspNetUsers" ToRole="Waiter" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_Product_AspNetUsers_CreatedBy" FromRole="AspNetUsers" ToRole="Product" />
+          <NavigationProperty Name="Products1" Relationship="Self.fk_Product_AspNetUsers_ModifiedBy" FromRole="AspNetUsers" ToRole="Product" />
+          <NavigationProperty Name="Waiters" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="AspNetUsers" ToRole="Waiter" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="AgeRating">
@@ -788,7 +795,21 @@
           </Key>
           <Property Name="AgeRatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Age" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_Product_AgeRating" FromRole="AgeRating" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_Product_AgeRating" FromRole="AgeRating" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="BarOrder">
+          <Key>
+            <PropertyRef Name="BarOrderID" />
+          </Key>
+          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
+          <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderPositionID" Type="Int32" Nullable="false" />
+          <Property Name="WaiterID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Waiter" Relationship="Self.fk_BarOrder_Waiter" FromRole="BarOrder" ToRole="Waiter" />
+          <NavigationProperty Name="BarTables" Relationship="Self.BarOrderBarTable" FromRole="BarOrder" ToRole="BarTable" />
+          <NavigationProperty Name="OrderPositions" Relationship="Self.BarOrderOrderPosition" FromRole="BarOrder" ToRole="OrderPosition" />
         </EntityType>
         <EntityType Name="BarTable">
           <Key>
@@ -801,8 +822,8 @@
           <Property Name="Height" Type="Int32" />
           <Property Name="SeatAmount" Type="Int32" />
           <Property Name="TableName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Reservation" Relationship="Self.fk_Reservation_BarTable" FromRole="BarTable" ToRole="Reservation" />
-          <NavigationProperty Name="BarOrders" Relationship="thekeModel.BarOrderBarTable" FromRole="BarTable" ToRole="BarOrder" />
+          <NavigationProperty Name="Reservations" Relationship="Self.fk_Reservation_BarTable" FromRole="BarTable" ToRole="Reservation" />
+          <NavigationProperty Name="BarOrders" Relationship="Self.BarOrderBarTable" FromRole="BarTable" ToRole="BarOrder" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -811,7 +832,7 @@
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_Product_Category" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="DeliverySlip">
           <Key>
@@ -825,6 +846,42 @@
           <NavigationProperty Name="Storage" Relationship="Self.fk_DeliverySlip_Storage" FromRole="DeliverySlip" ToRole="Storage" />
           <NavigationProperty Name="Supplier" Relationship="Self.fk_DeliverySlip_Supplier" FromRole="DeliverySlip" ToRole="Supplier" />
         </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvoiceAddressID" Type="Int32" />
+          <Property Name="Storno" Type="Byte" />
+          <NavigationProperty Name="InvoiceAddress" Relationship="Self.fk_InvoiceInvoiceAddressID" FromRole="Invoice" ToRole="InvoiceAddress" />
+          <NavigationProperty Name="InvoicePositions" Relationship="Self.fk_InvoicePositionInvoiceID" FromRole="Invoice" ToRole="InvoicePosition" />
+        </EntityType>
+        <EntityType Name="InvoiceAddress">
+          <Key>
+            <PropertyRef Name="InvoiceAddressID" />
+          </Key>
+          <Property Name="InvoiceAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invoices" Relationship="Self.fk_InvoiceInvoiceAddressID" FromRole="InvoiceAddress" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="InvoicePosition">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Self.fk_InvoicePositionInvoiceID" FromRole="InvoicePosition" ToRole="Invoice" />
+        </EntityType>
         <EntityType Name="NutriantContent">
           <Key>
             <PropertyRef Name="NutrinantContentID" />
@@ -837,7 +894,7 @@
           <Property Name="Sugar" Type="Double" />
           <Property Name="Albumen" Type="Double" />
           <Property Name="Salt" Type="Double" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_Product_NutriantContent" FromRole="NutriantContent" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_Product_NutriantContent" FromRole="NutriantContent" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderPosition">
           <Key>
@@ -847,7 +904,7 @@
           <Property Name="PriceHistoryID" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PriceHistory" Relationship="Self.fk_OrderPosition_PriceHistory" FromRole="OrderPosition" ToRole="PriceHistory" />
-          <NavigationProperty Name="BarOrders" Relationship="thekeModel.BarOrderOrderPosition" FromRole="OrderPosition" ToRole="BarOrder" />
+          <NavigationProperty Name="BarOrders" Relationship="Self.BarOrderOrderPosition" FromRole="OrderPosition" ToRole="BarOrder" />
         </EntityType>
         <EntityType Name="PriceHistory">
           <Key>
@@ -857,7 +914,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="OrderPosition" Relationship="Self.fk_OrderPosition_PriceHistory" FromRole="PriceHistory" ToRole="OrderPosition" />
+          <NavigationProperty Name="OrderPositions" Relationship="Self.fk_OrderPosition_PriceHistory" FromRole="PriceHistory" ToRole="OrderPosition" />
           <NavigationProperty Name="Product" Relationship="Self.fk_PriceHistoryProduct" FromRole="PriceHistory" ToRole="Product" />
         </EntityType>
         <EntityType Name="Producer">
@@ -866,7 +923,7 @@
           </Key>
           <Property Name="ProducerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_Product_Producer" FromRole="Producer" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_Product_Producer" FromRole="Producer" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -892,15 +949,15 @@
           <Property Name="ModifiedByID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModfiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_Product_AspNetUsers_CreatedBy" FromRole="Product" ToRole="AspNetUsers" />
-          <NavigationProperty Name="AspNetUsers1" Relationship="Self.fk_Product_AspNetUsers_ModifiedBy" FromRole="Product" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.fk_Product_AspNetUsers_CreatedBy" FromRole="Product" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.fk_Product_AspNetUsers_ModifiedBy" FromRole="Product" ToRole="AspNetUsers" />
           <NavigationProperty Name="AgeRating" Relationship="Self.fk_Product_AgeRating" FromRole="Product" ToRole="AgeRating" />
           <NavigationProperty Name="Category" Relationship="Self.fk_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="NutriantContent" Relationship="Self.fk_Product_NutriantContent" FromRole="Product" ToRole="NutriantContent" />
-          <NavigationProperty Name="PriceHistory" Relationship="Self.fk_PriceHistoryProduct" FromRole="Product" ToRole="PriceHistory" />
+          <NavigationProperty Name="PriceHistories" Relationship="Self.fk_PriceHistoryProduct" FromRole="Product" ToRole="PriceHistory" />
           <NavigationProperty Name="Producer" Relationship="Self.fk_Product_Producer" FromRole="Product" ToRole="Producer" />
           <NavigationProperty Name="ProductUnit" Relationship="Self.fk_Product_ProductUnit" FromRole="Product" ToRole="ProductUnit" />
-          <NavigationProperty Name="Storage" Relationship="Self.fk_Storage_Product" FromRole="Product" ToRole="Storage" />
+          <NavigationProperty Name="Storages" Relationship="Self.fk_Storage_Product" FromRole="Product" ToRole="Storage" />
         </EntityType>
         <EntityType Name="ProductUnit">
           <Key>
@@ -911,7 +968,7 @@
           <Property Name="SName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Volume" Type="Int32" Nullable="false" />
           <Property Name="LitreAmount" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.fk_Product_ProductUnit" FromRole="ProductUnit" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.fk_Product_ProductUnit" FromRole="ProductUnit" ToRole="Product" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -933,7 +990,7 @@
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="DeliverySlip" Relationship="Self.fk_DeliverySlip_Storage" FromRole="Storage" ToRole="DeliverySlip" />
+          <NavigationProperty Name="DeliverySlips" Relationship="Self.fk_DeliverySlip_Storage" FromRole="Storage" ToRole="DeliverySlip" />
           <NavigationProperty Name="Product" Relationship="Self.fk_Storage_Product" FromRole="Storage" ToRole="Product" />
         </EntityType>
         <EntityType Name="Supplier">
@@ -946,7 +1003,7 @@
           <Property Name="StreetNumber" Type="Int32" Nullable="false" />
           <Property Name="ZipCodeID" Type="Int32" Nullable="false" />
           <Property Name="OwnCustomerID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DeliverySlip" Relationship="Self.fk_DeliverySlip_Supplier" FromRole="Supplier" ToRole="DeliverySlip" />
+          <NavigationProperty Name="DeliverySlips" Relationship="Self.fk_DeliverySlip_Supplier" FromRole="Supplier" ToRole="DeliverySlip" />
           <NavigationProperty Name="ZipCode" Relationship="Self.fk_ZipCodeID" FromRole="Supplier" ToRole="ZipCode" />
         </EntityType>
         <EntityType Name="Waiter">
@@ -958,8 +1015,8 @@
           <Property Name="LName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nicname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="Waiter" ToRole="AspNetUsers" />
-          <NavigationProperty Name="BarOrders" Relationship="thekeModel.fk_BarOrder_Waiter" FromRole="Waiter" ToRole="BarOrder" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.fk_Waiter_AspNetUsers" FromRole="Waiter" ToRole="AspNetUsers" />
+          <NavigationProperty Name="BarOrders" Relationship="Self.fk_BarOrder_Waiter" FromRole="Waiter" ToRole="BarOrder" />
         </EntityType>
         <EntityType Name="ZipCode">
           <Key>
@@ -969,13 +1026,13 @@
           <Property Name="ZipCode1" Type="Int32" Nullable="false" />
           <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Supplier" Relationship="Self.fk_ZipCodeID" FromRole="ZipCode" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.fk_ZipCodeID" FromRole="ZipCode" ToRole="Supplier" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -986,10 +1043,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -1000,7 +1057,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Product_AspNetUsers_CreatedBy">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -1012,7 +1069,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Product_AspNetUsers_ModifiedBy">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -1024,7 +1081,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Waiter_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Waiter" Type="Self.Waiter" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -1044,6 +1101,18 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="AgeRatingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_BarOrder_Waiter">
+          <End Role="Waiter" Type="Self.Waiter" Multiplicity="1" />
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Waiter">
+              <PropertyRef Name="WaiterID" />
+            </Principal>
+            <Dependent Role="BarOrder">
+              <PropertyRef Name="WaiterID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1092,6 +1161,30 @@
             </Principal>
             <Dependent Role="DeliverySlip">
               <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_InvoiceInvoiceAddressID">
+          <End Role="InvoiceAddress" Type="Self.InvoiceAddress" Multiplicity="0..1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvoiceAddress">
+              <PropertyRef Name="InvoiceAddressID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="InvoiceAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_InvoicePositionInvoiceID">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="InvoicePosition" Type="Self.InvoicePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceID" />
+            </Principal>
+            <Dependent Role="InvoicePosition">
+              <PropertyRef Name="InvoiceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1180,29 +1273,41 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="thekeEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="AgeRating" EntityType="Self.AgeRating" />
-          <EntitySet Name="BarTable" EntityType="Self.BarTable" />
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="DeliverySlip" EntityType="Self.DeliverySlip" />
-          <EntitySet Name="NutriantContent" EntityType="Self.NutriantContent" />
-          <EntitySet Name="OrderPosition" EntityType="Self.OrderPosition" />
-          <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" />
-          <EntitySet Name="Producer" EntityType="Self.Producer" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" />
-          <EntitySet Name="Reservation" EntityType="Self.Reservation" />
-          <EntitySet Name="Storage" EntityType="Self.Storage" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
-          <EntitySet Name="Waiter" EntityType="Self.Waiter" />
-          <EntitySet Name="ZipCode" EntityType="Self.ZipCode" />
+        <Association Name="BarOrderBarTable">
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
+          <End Role="BarTable" Type="Self.BarTable" Multiplicity="*" />
+        </Association>
+        <Association Name="BarOrderOrderPosition">
+          <End Role="BarOrder" Type="Self.BarOrder" Multiplicity="*" />
+          <End Role="OrderPosition" Type="Self.OrderPosition" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ThekeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="AgeRatings" EntityType="Self.AgeRating" />
+          <EntitySet Name="BarOrders" EntityType="Self.BarOrder" />
+          <EntitySet Name="BarTables" EntityType="Self.BarTable" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="DeliverySlips" EntityType="Self.DeliverySlip" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="InvoiceAddresses" EntityType="Self.InvoiceAddress" />
+          <EntitySet Name="InvoicePositions" EntityType="Self.InvoicePosition" />
+          <EntitySet Name="NutriantContents" EntityType="Self.NutriantContent" />
+          <EntitySet Name="OrderPositions" EntityType="Self.OrderPosition" />
+          <EntitySet Name="PriceHistories" EntityType="Self.PriceHistory" />
+          <EntitySet Name="Producers" EntityType="Self.Producer" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductUnits" EntityType="Self.ProductUnit" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Storages" EntityType="Self.Storage" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="Waiters" EntityType="Self.Waiter" />
+          <EntitySet Name="ZipCodes" EntityType="Self.ZipCode" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -1213,195 +1318,97 @@
           </AssociationSet>
           <AssociationSet Name="fk_Product_AspNetUsers_CreatedBy" Association="Self.fk_Product_AspNetUsers_CreatedBy">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="fk_Product_AspNetUsers_ModifiedBy" Association="Self.fk_Product_AspNetUsers_ModifiedBy">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="fk_Waiter_AspNetUsers" Association="Self.fk_Waiter_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Waiter" EntitySet="Waiter" />
+            <End Role="Waiter" EntitySet="Waiters" />
           </AssociationSet>
           <AssociationSet Name="fk_Product_AgeRating" Association="Self.fk_Product_AgeRating">
-            <End Role="AgeRating" EntitySet="AgeRating" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="AgeRating" EntitySet="AgeRatings" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="fk_BarOrder_Waiter" Association="Self.fk_BarOrder_Waiter">
+            <End Role="Waiter" EntitySet="Waiters" />
+            <End Role="BarOrder" EntitySet="BarOrders" />
           </AssociationSet>
           <AssociationSet Name="fk_Reservation_BarTable" Association="Self.fk_Reservation_BarTable">
-            <End Role="BarTable" EntitySet="BarTable" />
-            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="BarTable" EntitySet="BarTables" />
+            <End Role="Reservation" EntitySet="Reservations" />
           </AssociationSet>
           <AssociationSet Name="fk_Product_Category" Association="Self.fk_Product_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="fk_DeliverySlip_Storage" Association="Self.fk_DeliverySlip_Storage">
-            <End Role="Storage" EntitySet="Storage" />
-            <End Role="DeliverySlip" EntitySet="DeliverySlip" />
+            <End Role="Storage" EntitySet="Storages" />
+            <End Role="DeliverySlip" EntitySet="DeliverySlips" />
           </AssociationSet>
           <AssociationSet Name="fk_DeliverySlip_Supplier" Association="Self.fk_DeliverySlip_Supplier">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="DeliverySlip" EntitySet="DeliverySlip" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="DeliverySlip" EntitySet="DeliverySlips" />
+          </AssociationSet>
+          <AssociationSet Name="fk_InvoiceInvoiceAddressID" Association="Self.fk_InvoiceInvoiceAddressID">
+            <End Role="InvoiceAddress" EntitySet="InvoiceAddresses" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_InvoicePositionInvoiceID" Association="Self.fk_InvoicePositionInvoiceID">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="InvoicePosition" EntitySet="InvoicePositions" />
           </AssociationSet>
           <AssociationSet Name="fk_Product_NutriantContent" Association="Self.fk_Product_NutriantContent">
-            <End Role="NutriantContent" EntitySet="NutriantContent" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="NutriantContent" EntitySet="NutriantContents" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="fk_OrderPosition_PriceHistory" Association="Self.fk_OrderPosition_PriceHistory">
-            <End Role="PriceHistory" EntitySet="PriceHistory" />
-            <End Role="OrderPosition" EntitySet="OrderPosition" />
+            <End Role="PriceHistory" EntitySet="PriceHistories" />
+            <End Role="OrderPosition" EntitySet="OrderPositions" />
           </AssociationSet>
           <AssociationSet Name="fk_PriceHistoryProduct" Association="Self.fk_PriceHistoryProduct">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="PriceHistory" EntitySet="PriceHistory" />
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PriceHistory" EntitySet="PriceHistories" />
           </AssociationSet>
           <AssociationSet Name="fk_Product_Producer" Association="Self.fk_Product_Producer">
-            <End Role="Producer" EntitySet="Producer" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Producer" EntitySet="Producers" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="fk_Product_ProductUnit" Association="Self.fk_Product_ProductUnit">
-            <End Role="ProductUnit" EntitySet="ProductUnit" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductUnit" EntitySet="ProductUnits" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="fk_Storage_Product" Association="Self.fk_Storage_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Storage" EntitySet="Storage" />
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Storage" EntitySet="Storages" />
           </AssociationSet>
           <AssociationSet Name="fk_ZipCodeID" Association="Self.fk_ZipCodeID">
-            <End Role="ZipCode" EntitySet="ZipCode" />
-            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="ZipCode" EntitySet="ZipCodes" />
+            <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Invoice" EntityType="thekeModel.Invoice" />
-          <EntitySet Name="InvoiceAddress" EntityType="thekeModel.InvoiceAddress" />
-          <EntitySet Name="InvoicePosition" EntityType="thekeModel.InvoicePosition" />
-          <AssociationSet Name="fk_InvoiceInvoiceAddressID" Association="thekeModel.fk_InvoiceInvoiceAddressID">
-            <End Role="InvoiceAddress" EntitySet="InvoiceAddress" />
-            <End Role="Invoice" EntitySet="Invoice" />
-          </AssociationSet>
-          <AssociationSet Name="fk_InvoicePositionInvoiceID" Association="thekeModel.fk_InvoicePositionInvoiceID">
-            <End Role="Invoice" EntitySet="Invoice" />
-            <End Role="InvoicePosition" EntitySet="InvoicePosition" />
-          </AssociationSet>
-          <EntitySet Name="BarOrders" EntityType="thekeModel.BarOrder" />
-          <AssociationSet Name="fk_BarOrder_Waiter" Association="thekeModel.fk_BarOrder_Waiter">
-            <End Role="Waiter" EntitySet="Waiter" />
+          <AssociationSet Name="BarOrderBarTable" Association="Self.BarOrderBarTable">
             <End Role="BarOrder" EntitySet="BarOrders" />
+            <End Role="BarTable" EntitySet="BarTables" />
           </AssociationSet>
-          <AssociationSet Name="BarOrderBarTable" Association="thekeModel.BarOrderBarTable">
+          <AssociationSet Name="BarOrderOrderPosition" Association="Self.BarOrderOrderPosition">
             <End Role="BarOrder" EntitySet="BarOrders" />
-            <End Role="BarTable" EntitySet="BarTable" />
-          </AssociationSet>
-          <AssociationSet Name="BarOrderOrderPosition" Association="thekeModel.BarOrderOrderPosition">
-            <End Role="BarOrder" EntitySet="BarOrders" />
-            <End Role="OrderPosition" EntitySet="OrderPosition" />
+            <End Role="OrderPosition" EntitySet="OrderPositions" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Invoice">
-          <Key>
-            <PropertyRef Name="InvoiceID" />
-          </Key>
-          <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="InvoiceAddressID" Type="Int32" />
-          <Property Name="Storno" Type="Byte" />
-          <NavigationProperty Name="InvoiceAddress" Relationship="thekeModel.fk_InvoiceInvoiceAddressID" FromRole="Invoice" ToRole="InvoiceAddress" />
-          <NavigationProperty Name="InvoicePosition" Relationship="thekeModel.fk_InvoicePositionInvoiceID" FromRole="Invoice" ToRole="InvoicePosition" />
-        </EntityType>
-        <EntityType Name="InvoiceAddress">
-          <Key>
-            <PropertyRef Name="InvoiceAddressID" />
-          </Key>
-          <Property Name="InvoiceAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titel" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Street" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Zipcode" Type="Int32" />
-          <Property Name="City" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Invoice" Relationship="thekeModel.fk_InvoiceInvoiceAddressID" FromRole="InvoiceAddress" ToRole="Invoice" />
-        </EntityType>
-        <EntityType Name="InvoicePosition">
-          <Key>
-            <PropertyRef Name="InvoiceID" />
-            <PropertyRef Name="PositionID" />
-          </Key>
-          <Property Name="InvoiceID" Type="Int32" Nullable="false" />
-          <Property Name="PositionID" Type="Int32" Nullable="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Invoice" Relationship="thekeModel.fk_InvoicePositionInvoiceID" FromRole="InvoicePosition" ToRole="Invoice" />
-        </EntityType>
-        <Association Name="fk_InvoiceInvoiceAddressID">
-          <End Type="thekeModel.InvoiceAddress" Role="InvoiceAddress" Multiplicity="0..1" />
-          <End Type="thekeModel.Invoice" Role="Invoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="InvoiceAddress">
-              <PropertyRef Name="InvoiceAddressID" />
-            </Principal>
-            <Dependent Role="Invoice">
-              <PropertyRef Name="InvoiceAddressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_InvoicePositionInvoiceID">
-          <End Type="thekeModel.Invoice" Role="Invoice" Multiplicity="1" />
-          <End Type="thekeModel.InvoicePosition" Role="InvoicePosition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="InvoiceID" />
-            </Principal>
-            <Dependent Role="InvoicePosition">
-              <PropertyRef Name="InvoiceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="BarOrder">
-          <Key>
-            <PropertyRef Name="BarOrderID" />
-          </Key>
-          <Property Name="BarOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
-          <Property Name="BarOrderBarTableID" Type="Int32" Nullable="false" />
-          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OrderPositionID" Type="Int32" Nullable="false" />
-          <Property Name="WaiterID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Waiter" Relationship="thekeModel.fk_BarOrder_Waiter" FromRole="BarOrder" ToRole="Waiter" />
-          <NavigationProperty Name="BarTables" Relationship="thekeModel.BarOrderBarTable" FromRole="BarOrder" ToRole="BarTable" />
-          <NavigationProperty Name="OrderPositions" Relationship="thekeModel.BarOrderOrderPosition" FromRole="BarOrder" ToRole="OrderPosition" />
-        </EntityType>
-        <Association Name="fk_BarOrder_Waiter">
-          <End Type="thekeModel.Waiter" Role="Waiter" Multiplicity="1" />
-          <End Type="thekeModel.BarOrder" Role="BarOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Waiter">
-              <PropertyRef Name="WaiterID" />
-            </Principal>
-            <Dependent Role="BarOrder">
-              <PropertyRef Name="WaiterID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="BarOrderBarTable">
-          <End Type="thekeModel.BarOrder" Role="BarOrder" Multiplicity="*" />
-          <End Type="thekeModel.BarTable" Role="BarTable" Multiplicity="*" />
-        </Association>
-        <Association Name="BarOrderOrderPosition">
-          <End Type="thekeModel.BarOrder" Role="BarOrder" Multiplicity="*" />
-          <End Type="thekeModel.OrderPosition" Role="OrderPosition" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="thekeModelStoreContainer" CdmEntityContainer="thekeEntities">
+        <EntityContainerMapping StorageEntityContainer="thekeModelsStoreContainer" CdmEntityContainer="ThekeEntities">
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="thekeModel.AspNetRoles">
+            <EntityTypeMapping TypeName="thekeModels.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1409,7 +1416,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="thekeModel.AspNetUserClaims">
+            <EntityTypeMapping TypeName="thekeModels.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1419,7 +1426,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="thekeModel.AspNetUserLogins">
+            <EntityTypeMapping TypeName="thekeModels.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -1428,7 +1435,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="thekeModel.AspNetUsers">
+            <EntityTypeMapping TypeName="thekeModels.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1442,19 +1449,34 @@
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="VName" ColumnName="VName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="LaName" ColumnName="LaName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AgeRating">
-            <EntityTypeMapping TypeName="thekeModel.AgeRating">
+          <EntitySetMapping Name="AgeRatings">
+            <EntityTypeMapping TypeName="thekeModels.AgeRating">
               <MappingFragment StoreEntitySet="AgeRating">
                 <ScalarProperty Name="AgeRatingID" ColumnName="AgeRatingID" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BarTable">
-            <EntityTypeMapping TypeName="thekeModel.BarTable">
+          <EntitySetMapping Name="BarOrders">
+            <EntityTypeMapping TypeName="thekeModels.BarOrder">
+              <MappingFragment StoreEntitySet="BarOrder">
+                <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="BarOrderBarTableID" ColumnName="BarOrderBarTableID" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
+                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BarTables">
+            <EntityTypeMapping TypeName="thekeModels.BarTable">
               <MappingFragment StoreEntitySet="BarTable">
                 <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
                 <ScalarProperty Name="PositionX" ColumnName="PositionX" />
@@ -1466,8 +1488,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="thekeModel.Category">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="thekeModels.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1475,8 +1497,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DeliverySlip">
-            <EntityTypeMapping TypeName="thekeModel.DeliverySlip">
+          <EntitySetMapping Name="DeliverySlips">
+            <EntityTypeMapping TypeName="thekeModels.DeliverySlip">
               <MappingFragment StoreEntitySet="DeliverySlip">
                 <ScalarProperty Name="DeliverySlipID" ColumnName="DeliverySlipID" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
@@ -1486,8 +1508,42 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NutriantContent">
-            <EntityTypeMapping TypeName="thekeModel.NutriantContent">
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="thekeModels.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
+                <ScalarProperty Name="Storno" ColumnName="Storno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceAddresses">
+            <EntityTypeMapping TypeName="thekeModels.InvoiceAddress">
+              <MappingFragment StoreEntitySet="InvoiceAddress">
+                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoicePositions">
+            <EntityTypeMapping TypeName="thekeModels.InvoicePosition">
+              <MappingFragment StoreEntitySet="InvoicePosition">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NutriantContents">
+            <EntityTypeMapping TypeName="thekeModels.NutriantContent">
               <MappingFragment StoreEntitySet="NutriantContent">
                 <ScalarProperty Name="NutrinantContentID" ColumnName="NutrinantContentID" />
                 <ScalarProperty Name="Energy" ColumnName="Energy" />
@@ -1500,8 +1556,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderPosition">
-            <EntityTypeMapping TypeName="thekeModel.OrderPosition">
+          <EntitySetMapping Name="OrderPositions">
+            <EntityTypeMapping TypeName="thekeModels.OrderPosition">
               <MappingFragment StoreEntitySet="OrderPosition">
                 <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
                 <ScalarProperty Name="PriceHistoryID" ColumnName="PriceHistoryID" />
@@ -1509,8 +1565,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PriceHistory">
-            <EntityTypeMapping TypeName="thekeModel.PriceHistory">
+          <EntitySetMapping Name="PriceHistories">
+            <EntityTypeMapping TypeName="thekeModels.PriceHistory">
               <MappingFragment StoreEntitySet="PriceHistory">
                 <ScalarProperty Name="PriceHistoryID" ColumnName="PriceHistoryID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1519,16 +1575,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Producer">
-            <EntityTypeMapping TypeName="thekeModel.Producer">
+          <EntitySetMapping Name="Producers">
+            <EntityTypeMapping TypeName="thekeModels.Producer">
               <MappingFragment StoreEntitySet="Producer">
                 <ScalarProperty Name="ProducerID" ColumnName="ProducerID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="thekeModel.Product">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="thekeModels.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -1553,8 +1609,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductUnit">
-            <EntityTypeMapping TypeName="thekeModel.ProductUnit">
+          <EntitySetMapping Name="ProductUnits">
+            <EntityTypeMapping TypeName="thekeModels.ProductUnit">
               <MappingFragment StoreEntitySet="ProductUnit">
                 <ScalarProperty Name="ProductUnitID" ColumnName="ProductUnitID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1564,8 +1620,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reservation">
-            <EntityTypeMapping TypeName="thekeModel.Reservation">
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="thekeModels.Reservation">
               <MappingFragment StoreEntitySet="Reservation">
                 <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1576,8 +1632,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Storage">
-            <EntityTypeMapping TypeName="thekeModel.Storage">
+          <EntitySetMapping Name="Storages">
+            <EntityTypeMapping TypeName="thekeModels.Storage">
               <MappingFragment StoreEntitySet="Storage">
                 <ScalarProperty Name="StorageID" ColumnName="StorageID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
@@ -1586,8 +1642,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="thekeModel.Supplier">
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="thekeModels.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
@@ -1598,8 +1654,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Waiter">
-            <EntityTypeMapping TypeName="thekeModel.Waiter">
+          <EntitySetMapping Name="Waiters">
+            <EntityTypeMapping TypeName="thekeModels.Waiter">
               <MappingFragment StoreEntitySet="Waiter">
                 <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
                 <ScalarProperty Name="VName" ColumnName="VName" />
@@ -1609,8 +1665,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ZipCode">
-            <EntityTypeMapping TypeName="thekeModel.ZipCode">
+          <EntitySetMapping Name="ZipCodes">
+            <EntityTypeMapping TypeName="thekeModels.ZipCode">
               <MappingFragment StoreEntitySet="ZipCode">
                 <ScalarProperty Name="ZipCodeID" ColumnName="ZipCodeID" />
                 <ScalarProperty Name="ZipCode1" ColumnName="ZipCode" />
@@ -1619,7 +1675,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="thekeModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="thekeModels.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
@@ -1627,66 +1683,20 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Invoice">
-            <EntityTypeMapping TypeName="thekeModel.Invoice">
-              <MappingFragment StoreEntitySet="Invoice">
-                <ScalarProperty Name="Storno" ColumnName="Storno" />
-                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InvoiceAddress">
-            <EntityTypeMapping TypeName="thekeModel.InvoiceAddress">
-              <MappingFragment StoreEntitySet="InvoiceAddress">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="Titel" ColumnName="Titel" />
-                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InvoicePosition">
-            <EntityTypeMapping TypeName="thekeModel.InvoicePosition">
-              <MappingFragment StoreEntitySet="InvoicePosition">
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
-                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BarOrders">
-            <EntityTypeMapping TypeName="thekeModel.BarOrder">
-              <MappingFragment StoreEntitySet="BarOrder">
-                <ScalarProperty Name="WaiterID" ColumnName="WaiterID" />
-                <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
-                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
-                <ScalarProperty Name="BarOrderBarTableID" ColumnName="BarOrderBarTableID" />
-                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
-                <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="BarOrderBarTable" TypeName="thekeModel.BarOrderBarTable" StoreEntitySet="BarOrderBarTable">
+          <AssociationSetMapping Name="BarOrderBarTable" TypeName="thekeModels.BarOrderBarTable" StoreEntitySet="BarOrderBarTable">
+            <EndProperty Name="BarOrder">
+              <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
+            </EndProperty>
             <EndProperty Name="BarTable">
               <ScalarProperty Name="BarTableID" ColumnName="BarTableID" />
             </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BarOrderOrderPosition" TypeName="thekeModels.BarOrderOrderPosition" StoreEntitySet="BarOrderOrderPosition">
             <EndProperty Name="BarOrder">
               <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
             </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="BarOrderOrderPosition" TypeName="thekeModel.BarOrderOrderPosition" StoreEntitySet="BarOrderOrderPosition">
             <EndProperty Name="OrderPosition">
               <ScalarProperty Name="OrderPositionID" ColumnName="OrderPositionID" />
-            </EndProperty>
-            <EndProperty Name="BarOrder">
-              <ScalarProperty Name="BarOrderID" ColumnName="BarOrderID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
@@ -1703,10 +1713,10 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

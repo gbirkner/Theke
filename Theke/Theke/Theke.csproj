@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44359</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -44,6 +44,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -170,98 +198,107 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarOrdersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IdentityExtension.cs" />
+    <Compile Include="Migrations\201701121350234_InitialCreate.cs" />
+    <Compile Include="Migrations\201701121350234_InitialCreate.Designer.cs">
+      <DependentUpon>201701121350234_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgeRating.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetRoles.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUserClaims.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUserLogins.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetUsers.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BarOrder.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BarTable.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliverySlip.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InvoiceAddress.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InvoicePosition.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MetaData\Category.cs" />
     <Compile Include="Models\NutriantContent.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderPosition.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PriceHistory.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producer.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductUnit.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Reservation.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Storage.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Theke.Context.cs">
+    <Compile Include="Models\ThekeModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Theke.Context.tt</DependentUpon>
+      <DependentUpon>ThekeModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Theke.cs">
+    <Compile Include="Models\ThekeModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Theke.Designer.cs">
+    <Compile Include="Models\ThekeModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Theke.edmx</DependentUpon>
+      <DependentUpon>ThekeModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserRoleViewModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MetaData\Category.cs" />
     <Compile Include="Models\Waiter.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ZipCode.cs">
-      <DependentUpon>Theke.tt</DependentUpon>
+      <DependentUpon>ThekeModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -273,24 +310,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Theke.Context.tt">
+    <Content Include="Models\ThekeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Theke.edmx</DependentUpon>
-      <LastGenOutput>Theke.Context.cs</LastGenOutput>
+      <DependentUpon>ThekeModel.edmx</DependentUpon>
+      <LastGenOutput>ThekeModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Theke.tt">
+    <Content Include="Models\ThekeModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Theke.edmx</DependentUpon>
-      <LastGenOutput>Theke.cs</LastGenOutput>
+      <DependentUpon>ThekeModel.edmx</DependentUpon>
+      <LastGenOutput>ThekeModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Theke.edmx">
+    <EntityDeploy Include="Models\ThekeModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Theke.Designer.cs</LastGenOutput>
+      <LastGenOutput>ThekeModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Theke.edmx.diagram">
-      <DependentUpon>Theke.edmx</DependentUpon>
+    <Content Include="Models\ThekeModel.edmx.diagram">
+      <DependentUpon>ThekeModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Connection\Connectionstring.html" />
@@ -336,6 +373,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Web.config" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\BarOrders\Create.cshtml" />
+    <Content Include="Views\BarOrders\Delete.cshtml" />
+    <Content Include="Views\BarOrders\Details.cshtml" />
+    <Content Include="Views\BarOrders\Edit.cshtml" />
+    <Content Include="Views\BarOrders\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -357,6 +404,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701121350234_InitialCreate.resx">
+      <DependentUpon>201701121350234_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -371,11 +423,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5281</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:5281/</IISUrl>
+          <IISUrl>https://localhost:44359/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

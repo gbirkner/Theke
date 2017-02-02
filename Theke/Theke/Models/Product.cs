@@ -17,8 +17,8 @@ namespace Theke.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.PriceHistory = new HashSet<PriceHistory>();
-            this.Storage = new HashSet<Storage>();
+            this.PriceHistories = new HashSet<PriceHistory>();
+            this.Storages = new HashSet<Storage>();
         }
     
         public int ProductID { get; set; }
@@ -42,16 +42,16 @@ namespace Theke.Models
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ModfiedDate { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
-        public virtual AspNetUsers AspNetUsers1 { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual AgeRating AgeRating { get; set; }
         public virtual Category Category { get; set; }
         public virtual NutriantContent NutriantContent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PriceHistory> PriceHistory { get; set; }
+        public virtual ICollection<PriceHistory> PriceHistories { get; set; }
         public virtual Producer Producer { get; set; }
         public virtual ProductUnit ProductUnit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storage> Storage { get; set; }
+        public virtual ICollection<Storage> Storages { get; set; }
     }
 }
