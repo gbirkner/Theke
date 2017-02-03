@@ -29,10 +29,10 @@ namespace Theke.Controllers
                 name.SeatAmount = bartable.SeatAmount;
                 name.TableName = bartable.TableName;
                 name.BarTableID = bartable.BarTableID;
-                name.hasOpenPaymentStatus = 1;
+                name.hasOpenPaymentStatus = 0;
                 foreach (BarOrder barorder in barorders)
                 {
-                   if (barorder.PaymentStatus == 0)
+                   if (barorder.PaymentStatus == 1)
                     {
                         name.hasOpenPaymentStatus = barorder.PaymentStatus;
                     }
